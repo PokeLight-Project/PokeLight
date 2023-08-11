@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 11 août 2023 à 14:16
+-- Généré le : ven. 11 août 2023 à 14:24
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -20,6 +20,105 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `pokelight`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `arena`
+--
+
+DROP TABLE IF EXISTS `arena`;
+CREATE TABLE IF NOT EXISTS `arena` (
+  `id_arena` int NOT NULL AUTO_INCREMENT,
+  `name_arena` varchar(255) DEFAULT NULL,
+  `image_url_arena` varchar(255) DEFAULT NULL,
+  `type_bonus_arena` varchar(255) DEFAULT NULL,
+  `pv_bonus_arena` int DEFAULT NULL,
+  `pa_bonus_arena` int DEFAULT NULL,
+  PRIMARY KEY (`id_arena`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `arena_battle`
+--
+
+DROP TABLE IF EXISTS `arena_battle`;
+CREATE TABLE IF NOT EXISTS `arena_battle` (
+  `id_battle` int NOT NULL AUTO_INCREMENT,
+  `id_arena` int NOT NULL,
+  PRIMARY KEY (`id_battle`,`id_arena`),
+  KEY `FK_arena_battle_id_arena` (`id_arena`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `battle`
+--
+
+DROP TABLE IF EXISTS `battle`;
+CREATE TABLE IF NOT EXISTS `battle` (
+  `id_battle` int NOT NULL AUTO_INCREMENT,
+  `content_battle` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_battle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `bonus`
+--
+
+DROP TABLE IF EXISTS `bonus`;
+CREATE TABLE IF NOT EXISTS `bonus` (
+  `id_pokemon` int NOT NULL AUTO_INCREMENT,
+  `id_arena` int NOT NULL,
+  PRIMARY KEY (`id_pokemon`,`id_arena`),
+  KEY `FK_bonus_id_arena` (`id_arena`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `level_battle`
+--
+
+DROP TABLE IF EXISTS `level_battle`;
+CREATE TABLE IF NOT EXISTS `level_battle` (
+  `id_pokemon` int NOT NULL AUTO_INCREMENT,
+  `id_battle` int NOT NULL,
+  PRIMARY KEY (`id_pokemon`,`id_battle`),
+  KEY `FK_level_battle_id_battle` (`id_battle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int NOT NULL AUTO_INCREMENT,
+  `content_message` text,
+  PRIMARY KEY (`id_message`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pokedex`
+--
+
+DROP TABLE IF EXISTS `pokedex`;
+CREATE TABLE IF NOT EXISTS `pokedex` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `id_pokemon` int NOT NULL,
+  PRIMARY KEY (`id_user`,`id_pokemon`),
+  KEY `FK_pokedex_id_pokemon` (`id_pokemon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -104,6 +203,73 @@ INSERT INTO `pokemon` (`id_pokemon`, `name_pokemon`, `image_url_pokemon`, `pv_po
 (61, 'machopeurPng', 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/machoke.png', 145, 20, 5, 'combat'),
 (62, 'mackogneurPng', 'https://img.pokemondb.net/sprites/black-white/anim/normal/machamp.gif', 189, 30, 10, 'combat'),
 (63, 'mackogneurPng', 'https://img.pokemondb.net/sprites/heartgold-soulsilver/normal/machamp.png', 189, 30, 10, 'combat');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `username_user` varchar(255) DEFAULT NULL,
+  `level` int DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `username_battle`
+--
+
+DROP TABLE IF EXISTS `username_battle`;
+CREATE TABLE IF NOT EXISTS `username_battle` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `id_battle` int NOT NULL,
+  PRIMARY KEY (`id_user`,`id_battle`),
+  KEY `FK_username_battle_id_battle` (`id_battle`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `arena_battle`
+--
+ALTER TABLE `arena_battle`
+  ADD CONSTRAINT `FK_arena_battle_id_arena` FOREIGN KEY (`id_arena`) REFERENCES `arena` (`id_arena`),
+  ADD CONSTRAINT `FK_arena_battle_id_battle` FOREIGN KEY (`id_battle`) REFERENCES `battle` (`id_battle`);
+
+--
+-- Contraintes pour la table `bonus`
+--
+ALTER TABLE `bonus`
+  ADD CONSTRAINT `FK_bonus_id_arena` FOREIGN KEY (`id_arena`) REFERENCES `arena` (`id_arena`),
+  ADD CONSTRAINT `FK_bonus_id_pokemon` FOREIGN KEY (`id_pokemon`) REFERENCES `pokemon` (`id_pokemon`);
+
+--
+-- Contraintes pour la table `level_battle`
+--
+ALTER TABLE `level_battle`
+  ADD CONSTRAINT `FK_level_battle_id_battle` FOREIGN KEY (`id_battle`) REFERENCES `battle` (`id_battle`),
+  ADD CONSTRAINT `FK_level_battle_id_pokemon` FOREIGN KEY (`id_pokemon`) REFERENCES `pokemon` (`id_pokemon`);
+
+--
+-- Contraintes pour la table `pokedex`
+--
+ALTER TABLE `pokedex`
+  ADD CONSTRAINT `FK_pokedex_id_pokemon` FOREIGN KEY (`id_pokemon`) REFERENCES `pokemon` (`id_pokemon`),
+  ADD CONSTRAINT `FK_pokedex_id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Contraintes pour la table `username_battle`
+--
+ALTER TABLE `username_battle`
+  ADD CONSTRAINT `FK_username_battle_id_battle` FOREIGN KEY (`id_battle`) REFERENCES `battle` (`id_battle`),
+  ADD CONSTRAINT `FK_username_battle_id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
