@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.press-start-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px; /* Ajustez la taille selon vos préférences */
+}
