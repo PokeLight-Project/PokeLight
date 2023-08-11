@@ -1,0 +1,139 @@
+DROP TABLE IF EXISTS user ;
+
+CREATE TABLE
+    user (
+        id_user INT AUTO_INCREMENT NOT NULL,
+        username_user VARCHAR(255),
+        level INT,
+        PRIMARY KEY (id_user)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS pokemon ;
+
+CREATE TABLE
+    pokemon (
+        id_pokemon INT AUTO_INCREMENT NOT NULL,
+        name_pokemon VARCHAR(255),
+        image_url_pokemon VARCHAR(255),
+        pv_pokemon INT,
+        pa_pokemon INT,
+        required_level INT,
+        type_pokemon VARCHAR(255),
+        PRIMARY KEY (id_pokemon)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS arena ;
+
+CREATE TABLE
+    arena (
+        id_arena INT AUTO_INCREMENT NOT NULL,
+        name_arena VARCHAR(255),
+        image_url_arena VARCHAR(255),
+        type_bonus_arena VARCHAR(255),
+        pv_bonus_arena INT,
+        pa_bonus_arena INT,
+        PRIMARY KEY (id_arena)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS message ;
+
+CREATE TABLE
+    message (
+        id_message INT AUTO_INCREMENT NOT NULL,
+        content_message TEXT,
+        PRIMARY KEY (id_message)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS battle ;
+
+CREATE TABLE
+    battle (
+        id_battle INT AUTO_INCREMENT NOT NULL,
+        content_battle VARCHAR(255),
+        PRIMARY KEY (id_battle)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS pokedex ;
+
+CREATE TABLE
+    pokedex (
+        id_user INT AUTO_INCREMENT NOT NULL,
+        id_pokemon INT NOT NULL,
+        PRIMARY KEY (id_user, id_pokemon)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS bonus ;
+
+CREATE TABLE
+    bonus (
+        id_pokemon INT AUTO_INCREMENT NOT NULL,
+        id_arena INT NOT NULL,
+        PRIMARY KEY (id_pokemon, id_arena)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS arena_battle ;
+
+CREATE TABLE
+    arena_battle (
+        id_battle INT AUTO_INCREMENT NOT NULL,
+        id_arena INT NOT NULL,
+        PRIMARY KEY (id_battle, id_arena)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS level_battle ;
+
+CREATE TABLE
+    level_battle (
+        id_pokemon INT AUTO_INCREMENT NOT NULL,
+        id_battle INT NOT NULL,
+        PRIMARY KEY (id_pokemon, id_battle)
+    ) ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS username_battle ;
+
+CREATE TABLE
+    username_battle (
+        id_user INT AUTO_INCREMENT NOT NULL,
+        id_battle INT NOT NULL,
+        PRIMARY KEY (id_user, id_battle)
+    ) ENGINE = InnoDB;
+
+ALTER TABLE pokedex
+ADD
+    CONSTRAINT FK_pokedex_id_user FOREIGN KEY (id_user) REFERENCES user (id_user);
+
+ALTER TABLE pokedex
+ADD
+    CONSTRAINT FK_pokedex_id_pokemon FOREIGN KEY (id_pokemon) REFERENCES pokemon (id_pokemon);
+
+ALTER TABLE bonus
+ADD
+    CONSTRAINT FK_bonus_id_pokemon FOREIGN KEY (id_pokemon) REFERENCES pokemon (id_pokemon);
+
+ALTER TABLE bonus
+ADD
+    CONSTRAINT FK_bonus_id_arena FOREIGN KEY (id_arena) REFERENCES arena (id_arena);
+
+ALTER TABLE arena_battle
+ADD
+    CONSTRAINT FK_arena_battle_id_battle FOREIGN KEY (id_battle) REFERENCES battle (id_battle);
+
+ALTER TABLE arena_battle
+ADD
+    CONSTRAINT FK_arena_battle_id_arena FOREIGN KEY (id_arena) REFERENCES arena (id_arena);
+
+ALTER TABLE level_battle
+ADD
+    CONSTRAINT FK_level_battle_id_pokemon FOREIGN KEY (id_pokemon) REFERENCES pokemon (id_pokemon);
+
+ALTER TABLE level_battle
+ADD
+    CONSTRAINT FK_level_battle_id_battle FOREIGN KEY (id_battle) REFERENCES battle (id_battle);
+
+ALTER TABLE username_battle
+ADD
+    CONSTRAINT FK_username_battle_id_user FOREIGN KEY (id_user) REFERENCES user (id_user);
+
+ALTER TABLE username_battle
+ADD
+    CONSTRAINT FK_username_battle_id_battle FOREIGN KEY (id_battle) REFERENCES battle (id_battle);
