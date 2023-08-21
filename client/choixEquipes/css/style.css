@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.choix_equipe-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 35px;
+    color: #EBEF1E;
+    -webkit-text-stroke: #000000 1px;
+
+    text-align: center;
+    padding-top: 8%;
+}
+
+.back_arrow img {
+    margin: 15px;
+}
+
+
+
+
+.footer {
+    color: white;
+}
