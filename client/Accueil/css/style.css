@@ -1,21 +1,14 @@
-/* main { box-shadow: -1px 1px 10px 3px red inset; }
-header { box-shadow: -1px 1px 10px 3px rgb(255, 0, 234) inset; }
-nav { box-shadow: -1px 1px 10px 3px blue inset; }
-section { box-shadow: -1px 1px 10px 3px rgb(238, 255, 0) inset; }
-footer { box-shadow: -1px 1px 10px 3px green inset; } */
-
-
-/*Général*/
+/* Réinitialisation de la marge et du padding */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Styles communs pour le contenu */
 body {
-    width: 100%;
-    height: 100%;
+    font-family: 'Press Start 2P', cursive;
     overflow: hidden;
-    /* Pour empêcher le défilement de la page */
 }
 
 main {
@@ -24,22 +17,17 @@ main {
     min-height: 100vh;
 }
 
+header, section, footer {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Styles spécifiques pour différentes sections */
 header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 10px;
-}
-
-section {
-    flex: auto;
-}
-
-footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 10px;
 }
 
 video {
@@ -50,52 +38,60 @@ video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Pour remplir l'espace sans déformation */
 }
 
-/*Centrer les titres*/
-.center {
+section.start {
+    margin-top: 200px;
+}
+
+footer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    margin: 10px;
 }
 
-/*Titre*/
-.start {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 355px;
-    color: #EBEF1E ;
-}
-
-/*Espacement des boutons de menus en haut à droite*/
-.fa-solid {
-    margin: 0 10px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
-    color: #888C92;
-    -webkit-text-stroke: #000000 1px;
-}
-
-/*Police d'écriture*/
+/* Titre */
 .press-start-text {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 96px;
-    /* border: 2px solid white; */
-    padding: 170px;
-    padding-right: 470px;
-    padding-left: 470px;
-    margin-top: 100px;
-    margin-bottom: 4px;
+    font-size: 56px;
+    padding: 30px;
     background-color: #63965f;
+    color: #EBEF1E;
     -webkit-text-stroke: #000000 1px;
 }
 
-.press-copyright-text,
-.fa-copyright {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
-    color: white;
-    -webkit-text-stroke: #000000 1px;
+/* Média queries pour 1024x844 */
+@media (max-width: 1024px) and (max-height: 844px) {
+    section.start {
+        margin-top: 50px;
+    }
+
+    .press-start-text {
+        font-size: 24px;
+        padding: 10px;
+    }
+}
+
+/* Média queries pour 1440x1024 */
+@media (max-width: 1440px) and (max-height: 1024px) {
+    section.start {
+        margin-top: 100px;
+    }
+
+    .press-start-text {
+        font-size: 36px;
+        padding: 20px;
+    }
+}
+
+/* Média queries pour 1920x1080 */
+@media (max-width: 1920px) and (max-height: 1080px) {
+    section.start {
+        margin-top: 300px;
+    }
+
+    .press-start-text {
+        font-size: 72px;
+        padding: 50px;
+    }
 }
