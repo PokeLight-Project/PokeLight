@@ -15,7 +15,7 @@ body{
 .size{
     position: relative;
     width: 1440px;
-    height: 1024px;
+    height: 844px;
     background-color: #EBEF1E;
     background-image: url(../../Imgs/lobby/pokeCenter.jpeg);
     background-position: center center;
@@ -30,6 +30,7 @@ body{
     height: 100%;
     object-fit: cover;
 } */
+
 nav{
     display: flex;
     justify-content: space-between;
@@ -45,10 +46,10 @@ nav .back{
 .carre{
     position: absolute;
     top: 22%;
-    left: 21%;
-    height: 247px;
+    left: 26%;
+    height: 203px;
     border-radius: 15px;
-    width: 443px;
+    width: 362px;
     background-color: #B98A6E;
 }
 
