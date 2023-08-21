@@ -4,13 +4,32 @@
     box-sizing: border-box;
 }
 
-.body{
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+.size{
+    position: relative;
+    width: 1440px;
+    height: 1024px;
+    background-color: #EBEF1E;
+    background-image: url(../../Imgs/lobby/pokeCenter.jpeg);
+    background-position: center center;
+    background-size: cover;
+
+}
+
+/* .body{
     position: absolute;
     z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 nav{
     display: flex;
     justify-content: space-between;
@@ -21,6 +40,16 @@ nav{
 nav .back{
     display: flex;
     flex-direction: column;
+}
+
+.carre{
+    position: absolute;
+    top: 22%;
+    left: 21%;
+    height: 247px;
+    border-radius: 15px;
+    width: 443px;
+    background-color: #B98A6E;
 }
 
 nav .back img{
