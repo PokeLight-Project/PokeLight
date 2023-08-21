@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+} */
+
+body main img {
+    max-width: 1920px;
+    max-height: 1080px;
+}
+
 .body {
     position: absolute;
     width: 100%;
@@ -12,18 +24,23 @@
     z-index: -1;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .choix_equipe-text {
     font-family: 'Press Start 2P', cursive;
-    font-size: 35px;
+    font-size: 3rem;
     color: #EBEF1E;
-    -webkit-text-stroke: #000000 1px;
+    -webkit-text-stroke: #000000 0.1rem;
 
     text-align: center;
     padding-top: 8%;
 }
 
 .back_arrow img {
-    margin: 15px;
+    margin: 10%;
 }
 
 
