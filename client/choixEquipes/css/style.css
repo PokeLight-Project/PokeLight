@@ -12,8 +12,23 @@
     z-index: -1;
 }
 
-h1 {
+.choix_equipe-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 35px;
     color: #EBEF1E;
-    stroke: black 1px;
-    font-family: ;
+    -webkit-text-stroke: #000000 1px;
+
+    text-align: center;
+    padding-top: 8%;
+}
+
+.back_arrow img {
+    margin: 15px;
+}
+
+
+
+
+.footer {
+    color: white;
 }
