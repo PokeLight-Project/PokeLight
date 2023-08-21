@@ -12,6 +12,11 @@
     z-index: -1;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 .choix_equipe-text {
     font-family: 'Press Start 2P', cursive;
     font-size: 35px;
@@ -19,7 +24,7 @@
     -webkit-text-stroke: #000000 1px;
 
     text-align: center;
-    padding-top: 8%;
+    padding-top: 100px;
 }
 
 .back_arrow img {
