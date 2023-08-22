@@ -92,3 +92,12 @@ video {
     color: white;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
 }
+
+/*Modale*/
+.modal {
+    position: fixed;
+    bottom: 4.5%;
+    top: 4.5%;
+    width: 1440px;
+    background-color: rgba(0, 0, 0, 0.438);
+}
