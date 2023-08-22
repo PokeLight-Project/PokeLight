@@ -20,6 +20,8 @@ body{
     background-image: url(../../Imgs/lobby/pokeCenter.jpeg);
     background-position: center center;
     background-size: cover;
+    border-radius: 5px;
+    z-index: 0;
 
 }
 
@@ -44,6 +46,7 @@ nav .back{
 }
 
 .carre{
+   z-index: -1;
     position: absolute;
     top: 22%;
     left: 25%;
@@ -67,6 +70,7 @@ nav .back{
 }
 
 .carre2{
+    z-index: -1;
     position: absolute;
     top: 22%;
     left: 55%;
@@ -120,4 +124,75 @@ nav #volume{
     color: #888e92;
     -webkit-text-stroke: 1px black;
 
+}
+
+.block{
+    z-index: 0;
+    width: 80%;
+    background-color: #e9eaebab;
+    height: 70%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 25px;
+    border: 3px solid black;
+}
+
+.block .inputName{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.block input{
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    font-family: 'Handjet', cursive;
+    font-size: 50px;
+    width: 350px;
+
+}
+
+.block input::placeholder{
+    color: black;
+}
+
+.block p{
+    font-family: 'Handjet', cursive;
+    text-align: center;
+    font-size: 55px;
+    margin-top: 15px;
+}
+
+#pokemonLvl1{
+    display: flex; 
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 70%;
+    margin: auto;
+}
+
+.card {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 135px;
+    height: 135px;
+    border-radius: 25px;
+    
+}
+.card img{
+    width: 70%;
+}
+
+.interrogation{
+    position: relative;
+    font-size: 30px;
+    color: #888C92;
+    top: -41px;
+    left: 97px;
 }
