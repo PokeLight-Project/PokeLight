@@ -46,11 +46,46 @@ nav .back{
 .carre{
     position: absolute;
     top: 22%;
-    left: 26%;
+    left: 25%;
     height: 203px;
-    border-radius: 15px;
-    width: 362px;
+    border-radius: 20px;
+    width: 379px;
     background-color: #B98A6E;
+    border: 3px solid black;
+}
+
+
+.carre div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carre img{
+    width: 43%;
+
+}
+
+.carre2{
+    position: absolute;
+    top: 22%;
+    left: 55%;
+    height: 203px;
+    border-radius: 20px;
+    width: 365px;
+    background-color: #B98A6E;
+    border: 3px solid black;
+}
+
+.carre2 div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carre2 img{
+    width: 29%;
+
 }
 
 nav .back img{
