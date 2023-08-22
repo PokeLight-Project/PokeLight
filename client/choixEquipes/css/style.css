@@ -30,8 +30,18 @@ main {
 }
 
 nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+
+}
+
+/* btn volume */
+.fa-solid {
+    margin: 0 10px;
+    font-size: 32px;
+    color: #888C92;
+    -webkit-text-stroke: #000000 1px;
 }
 
 .choix_equipe-h1 {
@@ -40,7 +50,7 @@ nav {
     color: #EBEF1E;
     -webkit-text-stroke: #000000 0.1rem;
 
-    text-align: center;
+
     padding-top: 5%;
 }
 
@@ -48,22 +58,9 @@ nav {
     margin: 10%;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin: 10px;
-}
 
-.press-copyright-text,
-.fa-copyright {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
-    color: white;
-    -webkit-text-stroke: #000000 1px;
-}
-
-
+/* CONTAINERS */
+/* Main container */
 .container {
     display: flex;
     /* box-shadow: -1px 1px 10px 3px rgb(238, 255, 0) inset; */
@@ -75,6 +72,7 @@ footer {
     justify-content: space-between;
 }
 
+/* Left container */
 .container_left {
     /* box-shadow: -1px 1px 10px 3px rgb(255, 140, 0) inset; */
     width: 33%;
@@ -102,6 +100,7 @@ footer {
     border: solid #E70E0E 2px;
 }
 
+/* Middle container */
 .container_middle {
     box-shadow: -1px 1px 10px 3px rgb(105, 253, 0) inset;
     width: 28%;
@@ -109,6 +108,7 @@ footer {
     padding: 50px;
 }
 
+/* Right container */
 .container_right {
     /* box-shadow: -1px 1px 10px 3px rgb(0, 253, 228) inset; */
     width: 33%;
@@ -135,6 +135,7 @@ footer {
     width: 20%;
 }
 
+/* btn combat */
 #combat_btn {
     display: flex;
 
@@ -145,11 +146,27 @@ footer {
 
     font-size: 2.5rem;
     font-family: 'Press Start 2P', cursive;
-    text-align: center;
     justify-content: center;
     align-items: center;
     color: #ffffff;
     background-color: #918989;
     border-radius: 25px;
 
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 10px;
+}
+
+/* copyright */
+.press-copyright-text,
+.fa-copyright {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    color: white;
+    -webkit-text-stroke: #000000 1px;
 }
