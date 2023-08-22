@@ -3,19 +3,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     const myAudio = document.getElementById("myAudio");
     const playAudio = document.getElementById("volume");
-    let isPlaying = false;
+    let Playing = false;
 
     playAudio.addEventListener("click", () => {
-        if (!isPlaying) {
+        if (!Playing) {
             myAudio.play();
-            isPlaying = true;
+            Playing = true;
             playAudio.classList.remove("fa-solid");
             playAudio.classList.remove("fa-volume-xmark");
             playAudio.classList.add("fa-solid");
             playAudio.classList.add("fa-volume-high");
         } else {
             myAudio.pause();
-            isPlaying = false;
+            Playing = false;
             playAudio.classList.remove("fa-solid");
             playAudio.classList.remove("fa-volume-high");
             playAudio.classList.add("fa-solid");
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(response);
 
         response.then((data) => {
+
             console.log(data);
             data.forEach(element => {
                 let color = "";
@@ -55,13 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
                                         </div>`
 
             });
-                // Récupération des points d'interrogation pour afficher les stats
+                // Récupération les points d'interrogation pour afficher les stats
             let openStat = document.querySelectorAll(".interrogation")
-
+                
             console.log(openStat);
 
             openStat.forEach(element => {
                 element.addEventListener("click", () => {
+                    // element.style.backgroundColor = 'red';
                     const pokemonId = element.id;
 
                     console.log(pokemonId);

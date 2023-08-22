@@ -1,0 +1,124 @@
+/* main { box-shadow: -1px 1px 10px 3px red inset; }
+header { box-shadow: -1px 1px 10px 3px rgb(255, 0, 234) inset; }
+nav { box-shadow: -1px 1px 10px 3px blue inset; }
+section { box-shadow: -1px 1px 10px 3px rgb(0, 225, 255) inset; }
+.column1 { box-shadow: -1px 1px 10px 3px rgb(0, 255, 0) inset; }
+.column2 { box-shadow: -1px 1px 10px 3px rgb(204, 0, 255) inset; }
+.column3 { box-shadow: -1px 1px 10px 3px rgb(77, 1, 255) inset; } */
+
+/*Général*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 1440px;
+    height: 844px;
+    position: relative;
+    border-radius: 5px;
+}
+
+section {
+    flex: auto;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+/*Header*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.header-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 64px;
+    color: #ff0000;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+/*Police d'écriture*/
+.bungee-text-30 {
+    font-family: 'Bungee', cursive;
+    font-size: 30px;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+.bungee-text-32 {
+    font-family: 'Bungee', cursive;
+    font-size: 30px;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+.three-column-container {
+    width: 1440px;
+    height: 694px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.column1, .column3 {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.column2 {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+
+.image-to-reduce-alexis {
+    margin-top: -10px;
+    width: 200px;
+    height: 415px;
+}
+
+.image-to-reduce-charles {
+    margin-top: -10px;
+    width: 245px;
+    height: 415px;
+}
+
+.image-to-reduce-seb {
+    margin-top: -10px;
+    width: 260px;
+    height: 415px;
+}
