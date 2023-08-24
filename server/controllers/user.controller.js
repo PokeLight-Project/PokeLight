@@ -49,6 +49,20 @@ const getAllPokemon = (req, res) => {
     })
 }
 
+const getInfoOnePokemon = (req, res) => {
+    const pokemonId = req.params.id;
+    const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
+    conn.query(query, (err, result)=> {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :" + err);
+            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
+
+
 const getAllPokemonLvl = (req, res) => {
     const query = `SELECT *
     FROM pokemon
@@ -68,5 +82,5 @@ const getAllPokemonLvl = (req, res) => {
 
 
 module.exports = {
-    getAllPokemon, getAllPokemonLvl, createUserAndAddToPokedex
+    getAllPokemon, getAllPokemonLvl, createUserAndAddToPokedex, getInfoOnePokemon
 }
