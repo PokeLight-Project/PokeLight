@@ -26,7 +26,7 @@ main {
     height: 844px;
     position: relative;
     border-radius: 5px;
-    background-color: #00000062;
+    background-color: #000000c7;
 }
 
 section {
@@ -117,18 +117,21 @@ header {
     margin-top: -10px;
     width: 200px;
     height: 415px;
+    cursor: pointer;
 }
 
 .image-to-reduce-charles {
     margin-top: -10px;
     width: 245px;
     height: 415px;
+    cursor: pointer;
 }
 
 .image-to-reduce-seb {
     margin-top: -10px;
     width: 260px;
     height: 415px;
+    cursor: pointer;
 }
 
 /* Style de la modale */
