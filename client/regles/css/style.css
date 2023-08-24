@@ -2,7 +2,7 @@
 header { box-shadow: -1px 1px 10px 3px rgb(255, 0, 234) inset; }
 nav { box-shadow: -1px 1px 10px 3px blue inset; }
 section { box-shadow: -1px 1px 10px 3px rgb(0, 225, 255) inset; }
-footer { box-shadow: -1px 1px 10px 3px green inset; } */
+p { box-shadow: -1px 1px 10px 3px green inset; } */
 
 /*Général*/
 * {
@@ -24,6 +24,7 @@ main {
     height: 844px;
     position: relative;
     border-radius: 5px;
+    background-color: #000000c7;
 }
 
 section {
@@ -39,7 +40,6 @@ video {
     height: 100%;
     z-index: -2;
     object-fit: cover;
-    opacity: 0.5;
 }
 
 /*Header*/
@@ -69,7 +69,11 @@ header {
 
 /*Règles*/
 p {
-    margin: 0px 25px;
+    margin: 25px 25px;
+}
+
+.container{
+    overflow-y: auto;
 }
 
 /*Background Start*/
@@ -85,12 +89,14 @@ p {
     font-family: 'Bungee', cursive;
     font-size: 32px;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    color: white;
 }
 
 .bungee-text-15 {
     font-family: 'Bungee', cursive;
     font-size: 15px;
     text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    color: white;
 }
 
 .red-text {
