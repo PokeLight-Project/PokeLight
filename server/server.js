@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 // Connection à la base de données.
-const connectDb = require ('./config/db')
+const connectDb = require('./config/db')
 
 // Middlewares.
 const app = express();
@@ -27,7 +27,7 @@ app.use(cors({
     optionsSuccessStatus: 200
 }));
 
-// Vérification de mon localHost en affichant le messahe Hello World
+// Vérification de mon localHost en affichant le message Hello World
 // app.get('/', (req,res) => {
 //     res.send('Hello World')
 // });

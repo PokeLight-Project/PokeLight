@@ -47,10 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(data);
 
             data.forEach(element => {
-                showPokedex.innerHTML += `<div>
+                let color = "";
+                if (element.type_pokemon == "plante") {
+                    color = "background:rgba(0, 255, 26, 0.5);"
+                } else if (element.type_pokemon == "feu") {
+                    color = "background:rgba(255, 0, 0, 0.5);"
+                } else if (element.type_pokemon == "eau") {
+                    color = "background:rgba(0, 133, 255, 0.5);"
+                } else if (element.type_pokemon == "combat") {
+                    color = "background:rgba(255, 138, 0, 0.5);"
+                }
+
+                showPokedex.innerHTML += `<div class="card" style="${color}">
                 <p>${element.username_user}</p>
                 <img src= "${element.image_url_pokemon}" alt="Photo du Pokémon de ${element.username_user}">
-                <p>${element.level}</p>
+                <p>LVL ${element.level}</p>
                 </div>`
             });
         })
