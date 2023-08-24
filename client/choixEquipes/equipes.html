@@ -10,30 +10,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Choix Équipes</title>
 </head>
 
 <body>
     <main>
+        <audio id="music" loop src="../audio/Pokémon -All Title Themes [Generation 1-7]_SRubmXgbJUo.mp3"></audio>
         <nav>
             <div class="back_arrow">
                 <img src="../Imgs/lobby/Back_arrow.png" alt="Back arrow">
             </div>
 
-            <h1 class="choix_equipe-text">CHOIX DE L'EQUIPE</h1>
-            <div>
-                <!-- icone mute -->
-            </div>
-        </nav>
-        <div>
+            <h1 class="choix_equipe-h1">CHOIX DE L'EQUIPE</h1>
 
+            <i id="sound_barre" class="fa-solid fa-volume-xmark"></i>
+
+        </nav>
+        <div class="container">
+            <div class="container_left">
+                <img class="red_img" src="../Imgs/trainers/Red-pokemon.png" alt="Red">
+                <hr>
+                <div class="dragdrop_red">
+                    <!-- Cette div accueillera les pokémons drag&dropés -->
+                </div>
+            </div>
+            <div class="container_middle" id="container_middle">
+                <!-- Cette div accueillera les pokémons crées par les utilisteurs -->
+            </div>
+            <div class="container_right">
+                <img class="flora_img" src="../Imgs/trainers/Flora.png" alt="Flora">
+                <hr>
+                <div class="dragdrop_flora">
+                    <!-- Cette div accueillera les pokémons drag&dropés -->
+                </div>
+            </div>
         </div>
-        <div></div>
-        <!-- <footer>
+        <button id="combat_btn">COMBAT</button>
+        <footer>
             <i class="fa-regular fa-copyright"><span class="press-copyright-text"> Copyright SAC</span></i>
-        </footer> -->
+        </footer>
     </main>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
