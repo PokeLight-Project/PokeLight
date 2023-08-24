@@ -44,6 +44,12 @@ video {
     object-fit: cover;
 }
 
+p{
+    font-family: 'Bungee', cursive;
+    font-size: 15px;
+    color: #000000;
+}
+
 /*Header*/
 header {
     display: flex;
@@ -141,19 +147,22 @@ header {
     display: flex;
     background: linear-gradient(#48B19E, #FFFFFF);
     color: #000000;
-    margin: 28% 32%;
+    margin: 21% 32%;
     padding: 20px;
     border: 1px solid #000000;
-    width: 40%;
-    height: 30vh;
+    width: 52%;
+    height: 40vh;
+    line-height: 30px;
+    border-radius: 20px;
     align-items: stretch;
     flex-direction: row-reverse;
-    justify-content: space-around;
     flex-wrap: wrap;
     opacity: 0.9;
     position: fixed;
+    overflow-y: auto;
 }
 
+/* Style de la modale Charles */
 .modal-charles {
     display: none;
     position: fixed;
@@ -169,20 +178,23 @@ header {
     display: flex;
     background: linear-gradient(#48B19E, #FFFFFF);
     color: #000000;
-    margin: 26% 25%;
+    margin: 22% 22%;
     padding: 20px;
     border: 1px solid #000000;
-    width: 44%;
-    height: 30vh;
+    width: 52%;
+    height: 40vh;
+    line-height: 30px;
+    border-radius: 20px;
     align-items: stretch;
     flex-direction: row-reverse;
-    justify-content: space-around;
     flex-wrap: wrap;
     opacity: 0.9;
     position: fixed;
+    overflow-y: auto;
+    align-content: center;
 }
 
-/* Style de la modale */
+/* Style de la modale Séb */
 .modal-seb {
     display: none;
     position: fixed;
@@ -198,22 +210,36 @@ header {
     display: flex;
     background: linear-gradient(#48B19E, #FFFFFF);
     color: #000000;
-    margin: 27% 22%;
+    margin: 21% 32%;
     padding: 20px;
     border: 1px solid #000000;
-    width: 40%;
-    height: 27vh;
+    width: 52%;
+    height: 40vh;
+    line-height: 30px;
+    border-radius: 20px;
     align-items: stretch;
     flex-direction: row-reverse;
-    justify-content: space-around;
     flex-wrap: wrap;
     opacity: 0.9;
     position: fixed;
+    overflow-y: auto;
+}
+
+/* Style du titre de la modale */
+.modal-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-family: 'Bungee', cursive;
+    font-size: 30px;
+    margin: 11px;
 }
 
 /* Style pour fermer la modale */
 .close {
-    color: #aaa;
+    color: #000000;
     float: right;
     font-size: 28px;
     font-weight: bold;
