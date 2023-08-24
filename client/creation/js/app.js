@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 element.addEventListener("click", () => {
                     // element.style.backgroundColor = 'red';
                     const pokemonId = element.id;
-
                     console.log(pokemonId);
                 })
                 
