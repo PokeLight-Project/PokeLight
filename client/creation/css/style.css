@@ -159,7 +159,7 @@ nav #volume{
     color: black;
 }
 
-.block p{
+#ChoixPokemon{
     font-family: 'Handjet', cursive;
     text-align: center;
     font-size: 55px;
@@ -178,6 +178,7 @@ nav #volume{
 .card {
     /* position: relative; */
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     width: 135px;
