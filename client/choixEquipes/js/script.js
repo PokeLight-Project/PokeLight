@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     color = "background:rgba(255, 138, 0, 0.5);"
                 }
 
-                showPokedex.innerHTML += `<div class="card" style="${color}">
+                showPokedex.innerHTML += `<div class="card" style="${color}" draggable="true">
                 <p>${element.username_user}</p>
                 <img src= "${element.image_url_pokemon}" alt="Photo du Pokémon de ${element.username_user}">
                 <p>LVL ${element.level}</p>
