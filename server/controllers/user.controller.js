@@ -52,7 +52,7 @@ const getAllPokemon = (req, res) => {
 
 const getInfoOnePokemon = (req, res) => {
     const pokemonId = req.params.id;
-    const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
+    const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon, image_url_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
     conn.query(query, (err, result)=> {
         if (err) {
             console.error("Erreur lors de la récupération des données :" + err);

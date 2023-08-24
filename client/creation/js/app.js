@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getAllPokemonLvl1() {
         let pokemonLvl1 = document.getElementById("pokemonLvl1");
+
         const response = httpGet("http://localhost:8000/allPokemonLvl")
 
         console.log(response);
@@ -57,9 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                         </div>`;
 
             });
-                // Récupération les points d'interrogation pour afficher les stats
+            // Récupération les points d'interrogation pour afficher les stats
             let openStat = document.querySelectorAll(".interrogation")
-                
+
             console.log(openStat);
 
             openStat.forEach(element => {
@@ -68,35 +69,55 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(pokemonId);
                     const response = httpGet(`http://localhost:8000/onePokemon/${pokemonId}`);
                     console.log(response);
-            
+
                     // Mettre à jour la carte du Pokémon avec les nouvelles informations
                     response.then((data) => {
                         console.log(data);
                         const pokemonCard = document.getElementById(`pokemon-${pokemonId}`);
-                      
-                            // Remplacez le contenu de la carte avec les nouvelles informations
-                            pokemonCard.innerHTML = `
-                            <i id="${element.id}" class="fa-sharp fa-solid fa-question interrogation"></i>
+
+                        let img = ""
+                        if (data[0].type_pokemon == "plante") {
+                            img = "../Imgs/pokémons/typePlante.png"
+                        } else if (data[0].type_pokemon == "feu") {
+                            img = "../Imgs/pokémons/typeFeu.png"
+                        } else if (data[0].type_pokemon == "eau") {
+                            img = "../Imgs/pokémons/typeEau.png"
+                        } else {
+                            img = "../Imgs/pokémons/typeFeu.png"
+                        }
+
+                        // Remplacez le contenu de la carte avec les nouvelles informations
+                        pokemonCard.innerHTML = `
+                            <i id="${element.id}" class="fa-solid fa-xmark cross"></i>
                                 <div class="card2">
-                                
-                                <img src="" alt="Photo du type ${data[0].type_pokemon}"> 
+
+                                <img id="typePokemon" src="${img}" alt="Photo du type ${data[0].type_pokemon}"> 
                                 <p> PV : ${data[0].pv_pokemon} </p>
                                 <p> PV : ${data[0].pa_pokemon} </p>
                                 </div>
-
-                               
                             `;
-                        
+                        let closeStat = document.querySelector(".cross")
+
+                        console.log(closeStat);
+                        closeStat.addEventListener("click", () => {
+                            console.log("coucou");
+                            const pokemonId = element.id;
+                            console.log(pokemonId);
+
+                            pokemonCard.innerHTML = `
+                            <i id="${pokemonId}" class="fa-sharp fa-solid fa-question interrogation"></i>
+                                <img src="${data[0].image_url_pokemon}" alt=""> 
+                            `;
+                        })
                     });
                 });
-            });
 
-
-        })
-
+            })
+        }
+        )
+        // Récupérer L'id du pokemon au click et le selectionner en HTML
+        
     }
-
     getAllPokemonLvl1();
-
-
 })
+
