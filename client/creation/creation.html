@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet" />
     <title>Hall De Création</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
+    <audio id="myAudio" loop src="../audio/Pokémon-All-Title-Themes-creation.mp3"></audio>
     <main class="size">
 
-    <!-- <img class="body" src="../Imgs/lobby/pokeCenter.jpeg" alt=""> -->
-
-    <div class="carre">
-        <div>
-        <img src="../Imgs/trainers/Red-pokemon.png" alt="Photo de Red">
-    </div>
-    </div>
-
-    <div class="carre2">
-        <div>
-            <img src="../Imgs/trainers/Flora.png" alt="Photo de Red">
+        <div class="carre">
+            <div>
+                <img src="../Imgs/trainers/Red-pokemon.png" alt="Photo de Red" />
+            </div>
         </div>
-    </div>
 
-    <nav>
-        <div class="back">
-            <a href="../Accueil/index.html"><img src="../Imgs/lobby/Back_arrow.png" alt=""></a>
-           
+        <div class="carre2">
+            <div>
+                <img src="../Imgs/trainers/Flora.png" alt="Photo de Red" />
+            </div>
         </div>
-        <h1>HALL DE CREATION</h1>
-        <div>
-            <i id="volume" class="fa-solid fa-volume-high"></i>
+
+        <nav>
+            <div class="back">
+                <a href="../Accueil/index.html"><img src="../Imgs/lobby/Back_arrow.png" alt="" /></a>
+            </div>
+            <h1>HALL DE CREATION</h1>
+            <div>
+                <i id="volume" class="fa-solid fa-volume-xmark"></i>
+            </div>
+        </nav>
+
+        <div class="block">
+            <form>
+                <div class="inputName">
+                    <label for="nom"></label>
+                    <input name="nom" id="nom" type="text" placeholder="Nom de votre joueur" />
+                </div>
+                <p id="ChoixPokemon">Choisissez votre Pokémon</p>
+                <div id="pokemonLvl1">
+
+
+                </div>
+                <div class="positionButton">
+                    <input id="submit" type="submit" value="CREER UN JOUEUR">
+                    <button>Choix des équipes</button>
+                </div>
+            </form>
         </div>
-    </nav>
-</main>
+        <div class="pokedex">
+            <div id="pokedex">
+
+            </div>
+        </div>
+        <footer>
+            <i class="fa-regular fa-copyright"><span class="press-copyright-text"> Copyright SAC</span></i>
+        </footer>
+    </main>
+    <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -25,20 +25,34 @@ main {
     background-image: url(../../Imgs/lobby/pokecenter02.png);
     background-position: center center;
     background-size: cover;
+
+    border-radius: 5px;
 }
 
 nav {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+
 }
 
-.choix_equipe-text {
+/* btn volume */
+.fa-solid {
+    width: 40px;
+    height: 32px;
+    margin: 0 10px;
+    font-size: 32px;
+    color: #888C92;
+    -webkit-text-stroke: #000000 1px;
+}
+
+.choix_equipe-h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
     color: #EBEF1E;
     -webkit-text-stroke: #000000 0.1rem;
 
-    text-align: center;
+
     padding-top: 5%;
 }
 
@@ -46,6 +60,156 @@ nav {
     margin: 10%;
 }
 
+
+/* CONTAINERS */
+/* Main container */
+.container {
+    display: flex;
+    /* box-shadow: -1px 1px 10px 3px rgb(238, 255, 0) inset; */
+    width: 1400px;
+    height: 550px;
+    margin: auto;
+    margin-top: 20px;
+
+    justify-content: space-between;
+}
+
+/* Left container */
+.container_left {
+    /* box-shadow: -1px 1px 10px 3px rgb(255, 140, 0) inset; */
+    width: 33%;
+    height: 100%;
+
+    background-color: rgba(234, 235, 236, 0.7);
+    border: solid #000000 1px;
+    border-radius: 25px;
+
+}
+
+.red_img {
+    display: flex;
+    margin: auto;
+
+    width: 30%;
+}
+
+.container .container_left hr {
+    display: flex;
+    margin: auto;
+
+    width: 425px;
+    margin: 2%;
+    border: solid #E70E0E 2px;
+}
+
+/* Middle container */
+.container_middle {
+    display: flex;
+    flex-wrap: wrap;
+    /* box-shadow: -1px 1px 10px 3px rgb(105, 253, 0) inset; */
+    width: 28%;
+    height: 100%;
+    padding: 10px;
+    justify-content: center;
+    column-gap: 30px;
+
+    overflow-y: auto;
+}
+
+/* Sélecteur pour la partie de la barre de défilement */
+.container_middle::-webkit-scrollbar {
+    width: 10px;
+    /* Largeur de la barre de défilement */
+}
+
+/* Style de la poignée (thumb) de la barre de défilement */
+.container_middle::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Couleur de la poignée */
+    border-radius: 5px;
+    /* Arrondi de la poignée */
+}
+
+/* Style du track (fond) de la barre de défilement */
+.container_middle::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Couleur du track */
+}
+
+
+.card {
+    /* box-shadow: -1px 1px 10px 3px rgb(105, 253, 0) inset; */
+    width: 110px;
+    height: 150px;
+
+    margin: 10px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 25px;
+
+}
+
+.card img {
+    width: 80px;
+    margin: auto;
+
+}
+
+.card p {
+    font-family: 'handjet', cursive;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+/* Right container */
+.container_right {
+    /* box-shadow: -1px 1px 10px 3px rgb(0, 253, 228) inset; */
+    width: 33%;
+    height: 100%;
+
+    background-color: rgba(234, 235, 236, 0.7);
+    border: solid #000000 1px;
+    border-radius: 25px;
+}
+
+.container .container_right hr {
+    display: flex;
+    margin: auto;
+
+    width: 425px;
+    margin: 2%;
+    border: solid #0085FF 2px;
+}
+
+.flora_img {
+    display: flex;
+    margin: auto;
+
+    width: 20%;
+}
+
+/* btn combat */
+#combat_btn {
+    display: flex;
+
+    width: 300px;
+    height: 80px;
+    margin: auto;
+    margin-top: 20px;
+
+    font-size: 2.5rem;
+    font-family: 'handjet', cursive;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #918989;
+    border-radius: 25px;
+
+}
+
+/* Footer */
 footer {
     display: flex;
     justify-content: center;
@@ -53,6 +217,7 @@ footer {
     margin: 10px;
 }
 
+/* copyright */
 .press-copyright-text,
 .fa-copyright {
     font-family: 'Press Start 2P', cursive;
