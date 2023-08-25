@@ -72,10 +72,9 @@ video {
 /*Boutons de menus en haut à droite*/
 .fa-solid {
     margin: 0 10px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
+    font-size: 40px;
     color: #888C92;
-    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
     cursor: pointer;
 }
 
