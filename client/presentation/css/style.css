@@ -73,6 +73,7 @@ header {
     font-size: 64px;
     color: #ff0000;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    cursor: pointer;
 }
 
 /*Police d'écriture*/
