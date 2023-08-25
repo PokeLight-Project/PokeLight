@@ -111,7 +111,7 @@ nav .back span{
 }
 
 nav h1{
-    padding-top: 100px;
+    padding-top: 80px;
     font-size: 35px;
     font-family: 'Press Start 2P', cursive;
     color: #EBEF1E;
@@ -130,7 +130,8 @@ nav #volume{
     z-index: 0;
     width: 80%;
     background-color: #e9eaebab;
-    height: 70%;
+    /* height: 70%; */
+    padding-bottom: 25px;
     margin: auto;
     margin-top: 50px;
     border-radius: 25px;
@@ -143,14 +144,14 @@ nav #volume{
     margin-top: 15px;
 }
 
-.block input{
+.block .inputName input{
     background: none;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 3px solid black;
     font-family: 'Handjet', cursive;
-    font-size: 50px;
+    font-size: 40px;
     width: 350px;
 
 }
@@ -162,7 +163,7 @@ nav #volume{
 #ChoixPokemon{
     font-family: 'Handjet', cursive;
     text-align: center;
-    font-size: 55px;
+    font-size: 45px;
     margin-top: 15px;
 }
 
@@ -217,9 +218,49 @@ nav #volume{
     margin-right: 20px;
 }
 
+.card2 p {
+    padding: 3px 0px;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px
+}
+
+.card2 span {
+    background-color: #1cb350;
+    padding: 4px;
+
+}
+
 #typePokemon {
     width: 35px;
     transform: rotate(45deg);
     padding-bottom: 10px;
-    
+}
+
+.positionButton {
+    margin-top: 25px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 20px
+}
+
+.positionButton input{
+    padding: 15px 20px;
+    background-color: #2B980F;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-family: 'Handjet', cursive;
+    font-size: 20px;
+}
+
+.positionButton button {
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: none;
+    font-family: 'Handjet', cursive;
+    font-size: 20px;
+    color: white;
+    background-color: #918989;
 }
