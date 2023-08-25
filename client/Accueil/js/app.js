@@ -24,22 +24,50 @@ rules.addEventListener("click", goToRules);
 
 
 
-/* Audio */
-document.addEventListener("DOMContentLoaded", function () {
-    let audio = document.getElementById("myAudio");
-    let muteButton = document.getElementById("muteButton");
+// /* Audio */
+// document.addEventListener("DOMContentLoaded", function () {
+//     let audio = document.getElementById("myAudio");
+//     let muteButton = document.getElementById("muteButton");
 
-    audio.muted = true; // Mute by default
+//     audio.muted = true; // Mute by default
 
-    muteButton.addEventListener("click", function () {
-        if (audio.muted) {
-            audio.muted = false;
-            muteButton.classList.remove("fa-volume-xmark");
-            muteButton.classList.add("fa-volume-high");
+//     muteButton.addEventListener("click", function () {
+//         if (audio.muted) {
+//             audio.muted = false;
+//             muteButton.classList.remove("fa-volume-xmark");
+//             muteButton.classList.add("fa-volume-high");
+//         } else {
+//             audio.muted = true;
+//             muteButton.classList.remove("fa-volume-high");
+//             muteButton.classList.add("fa-volume-xmark");
+//         }
+//     });
+// });
+
+"use strict"
+
+document.addEventListener("DOMContentLoaded", async function () {
+    // Récupération des éléments audio et du bouton de lecture
+    const myAudio = document.getElementById("myAudio");
+    const playAudio = document.getElementById("volume");
+    let Playing = false;
+
+    // Gestionnaire de clic pour le bouton de lecture audio
+    playAudio.addEventListener("click", () => {
+        if (!Playing) {
+            myAudio.play();
+            Playing = true;
+            playAudio.classList.remove("fa-solid");
+            playAudio.classList.remove("fa-volume-xmark");
+            playAudio.classList.add("fa-solid");
+            playAudio.classList.add("fa-volume-high");
         } else {
-            audio.muted = true;
-            muteButton.classList.remove("fa-volume-high");
-            muteButton.classList.add("fa-volume-xmark");
+            myAudio.pause();
+            Playing = false;
+            playAudio.classList.remove("fa-solid");
+            playAudio.classList.remove("fa-volume-high");
+            playAudio.classList.add("fa-solid");
+            playAudio.classList.add("fa-volume-xmark");
         }
-    });
-});
+    })
+})
