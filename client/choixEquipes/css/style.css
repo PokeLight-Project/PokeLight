@@ -102,11 +102,22 @@ nav {
     border: solid #E70E0E 2px;
 }
 
+.container .container_left .dragdrop_red {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    box-shadow: -1px 1px 10px 3px rgb(203, 57, 17) inset;
+    width: 90%;
+    height: 65%;
+
+    margin: auto;
+}
+
 /* Middle container */
 .container_middle {
     display: flex;
     flex-wrap: wrap;
-    /* box-shadow: -1px 1px 10px 3px rgb(105, 253, 0) inset; */
     width: 28%;
     height: 100%;
     padding: 10px;
@@ -133,6 +144,7 @@ nav {
 /* Style du track (fond) de la barre de défilement */
 .container_middle::-webkit-scrollbar-track {
     background-color: #f1f1f1;
+    border-radius: 5px;
     /* Couleur du track */
 }
 
@@ -174,6 +186,13 @@ nav {
     border-radius: 25px;
 }
 
+.flora_img {
+    display: flex;
+    margin: auto;
+
+    width: 20%;
+}
+
 .container .container_right hr {
     display: flex;
     margin: auto;
@@ -183,11 +202,16 @@ nav {
     border: solid #0085FF 2px;
 }
 
-.flora_img {
+.container .container_right .dragdrop_flora {
     display: flex;
-    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    width: 20%;
+    box-shadow: -1px 1px 10px 3px rgb(21, 0, 253) inset;
+    width: 90%;
+    height: 63%;
+
+    margin: auto;
 }
 
 /* btn combat */

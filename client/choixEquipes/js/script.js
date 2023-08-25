@@ -58,16 +58,101 @@ document.addEventListener("DOMContentLoaded", () => {
                     color = "background:rgba(255, 138, 0, 0.5);"
                 }
 
-                showPokedex.innerHTML += `<div class="card" style="${color}" draggable="true">
-                <p>${element.username_user}</p>
-                <img src= "${element.image_url_pokemon}" alt="Photo du Pokémon de ${element.username_user}">
-                <p>LVL ${element.level}</p>
-                </div>`
+                const card = document.createElement("div");
+                card.className = "card";
+                card.style = color;
+                card.draggable = true;
+
+                card.innerHTML = `
+                    <p>${element.username_user}</p>
+                    <img src="${element.image_url_pokemon}" alt="Photo du Pokémon de ${element.username_user}">
+                    <p>LVL ${element.level}</p>
+                `;
+
+                card.addEventListener("dragstart", (event) => {
+                    event.dataTransfer.setData("text/plain", JSON.stringify(element));
+                });
+
+                showPokedex.appendChild(card);
             });
-        })
+        });
     }
     getAllPokedex();
 
+    const dragdropRed = document.querySelector(".dragdrop_red");
+    const dragdropFlora = document.querySelector(".dragdrop_flora");
+
+    dragdropRed.addEventListener("dragover", (event) => {
+        event.preventDefault();
+    });
+
+    dragdropFlora.addEventListener("dragover", (event) => {
+        event.preventDefault();
+    });
+
+    dragdropRed.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        createCardInDropZone(data, dragdropRed);
+    });
+
+    dragdropFlora.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        createCardInDropZone(data, dragdropFlora);
+    });
 
 
-})
+
+
+
+
+    function determineColor(type) {
+        if (type === "plante") {
+            return "background: rgba(0, 255, 26, 0.5);";
+        } else if (type === "feu") {
+            return "background: rgba(255, 0, 0, 0.5);";
+        } else if (type === "eau") {
+            return "background: rgba(0, 133, 255, 0.5);";
+        } else if (type === "combat") {
+            return "background: rgba(255, 138, 0, 0.5);";
+        }
+        return ""; // Valeur par défaut
+    }
+
+
+
+
+
+    function createCardInDropZone(data, dropZone) {
+        // let color = "";
+        // if (data.type_pokemon == "plante") {
+        //     color = "background:rgba(0, 255, 26, 0.5);";
+        // } else if (data.type_pokemon == "feu") {
+        //     color = "background:rgba(255, 0, 0, 0.5);";
+        // } else if (data.type_pokemon == "eau") {
+        //     color = "background:rgba(0, 133, 255, 0.5);";
+        // } else if (data.type_pokemon == "combat") {
+        //     color = "background:rgba(255, 138, 0, 0.5);";
+        // }
+
+        const teamCards = dropZone.querySelectorAll(".card");
+
+        if (teamCards.length < 5) {
+            let cardColor = determineColor(data.type_pokemon);
+
+
+            const card = document.createElement("div");
+            card.className = "card";
+            card.style = cardColor;
+
+            card.innerHTML = `
+            <p>${data.username_user}</p>
+            <img src="${data.image_url_pokemon}" alt="Photo du Pokémon de ${data.username_user}">
+            <p>LVL ${data.level}</p>
+        `;
+
+            dropZone.appendChild(card);
+        }
+    }
+});
