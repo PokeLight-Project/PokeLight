@@ -28,18 +28,23 @@ rules.addEventListener("click", goToRules);
 document.addEventListener("DOMContentLoaded", function () {
     let audio = document.getElementById("myAudio");
     let muteButton = document.getElementById("muteButton");
+    let Playing = false;
+    muteButton.addEventListener("click", () => {
 
-    audio.muted = true; // Mute by default
-
-    muteButton.addEventListener("click", function () {
-        if (audio.muted) {
-            audio.muted = false;
-            muteButton.classList.remove("fa-volume-xmark");
-            muteButton.classList.add("fa-volume-high");
-        } else {
-            audio.muted = true;
-            muteButton.classList.remove("fa-volume-high");
-            muteButton.classList.add("fa-volume-xmark");
-        }
+    if (!Playing) {
+        audio.play();
+        Playing = true;
+        muteButton.classList.remove("fa-solid");
+        muteButton.classList.remove("fa-volume-xmark");
+        muteButton.classList.add("fa-solid");
+        muteButton.classList.add("fa-volume-high");
+    } else {
+        audio.pause();
+        Playing = false;
+        muteButton.classList.remove("fa-solid");
+        muteButton.classList.remove("fa-volume-high");
+        muteButton.classList.add("fa-solid");
+        muteButton.classList.add("fa-volume-xmark");
+    }
     });
-});
+})
