@@ -24,6 +24,19 @@ rules.addEventListener("click", goToRules);
 
 
 
+// Fonction pour aller à la page "création"
+function goToCreate() {
+    window.location.href = "../creation/creation.html";
+}
+
+// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "fa-question"
+const create = document.querySelector(".press-start-text");
+create.addEventListener("click", goToCreate);
+
+
+
+
+
 /* Audio */
 document.addEventListener("DOMContentLoaded", function () {
     let audio = document.getElementById("myAudio");
@@ -46,5 +59,4 @@ document.addEventListener("DOMContentLoaded", function () {
             muteButton.classList.add("fa-volume-xmark");
         }
     })
-
 });

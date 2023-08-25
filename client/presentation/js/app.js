@@ -53,3 +53,51 @@ function returnToHomePage() {
 // Ajouter un écouteur d'événement au clic sur l'élément avec la classe "header-icons"
 const headerIconsElement = document.querySelector(".header-icons");
 headerIconsElement.addEventListener("click", returnToHomePage);
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let audio = document.getElementById("myAudio");
+    let muteButton = document.getElementById("muteButton");
+    let Playing = false;
+    
+    // Vérification du cookie pour restaurer l'état de lecture du son
+    const soundPlayingCookie = document.cookie.split('; ').find(row => row.startsWith('soundPlaying='));
+    if (soundPlayingCookie) {
+        Playing = true;
+        muteButton.classList.remove("fa-solid");
+        muteButton.classList.remove("fa-volume-xmark");
+        muteButton.classList.add("fa-solid");
+        muteButton.classList.add("fa-volume-high");
+    }
+    
+    muteButton.addEventListener("click", () => {
+        if (!Playing) {
+            audio.play();
+            Playing = true;
+            // Enregistrement du cookie lors du démarrage du son
+            document.cookie = "soundPlaying=true";
+            muteButton.classList.remove("fa-solid");
+            muteButton.classList.remove("fa-volume-xmark");
+            muteButton.classList.add("fa-solid");
+            muteButton.classList.add("fa-volume-high");
+        } else {
+            audio.pause();
+            Playing = false;
+            // Suppression du cookie lors de la pause du son
+            document.cookie = "soundPlaying=; expires=Fri, 31 Dec 2050 23:59:59 GMT; path=/;";
+            muteButton.classList.remove("fa-solid");
+            muteButton.classList.remove("fa-volume-high");
+            muteButton.classList.add("fa-solid");
+            muteButton.classList.add("fa-volume-xmark");
+        }
+    });
+});

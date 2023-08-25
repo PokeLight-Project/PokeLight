@@ -76,6 +76,7 @@ video {
     font-size: 32px;
     color: #888C92;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    cursor: pointer;
 }
 
 /*Police d'écriture*/
@@ -83,6 +84,7 @@ video {
     font-family: 'Press Start 2P', cursive;
     font-size: 96px;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    cursor: pointer;
 }
 
 .press-copyright-text,
