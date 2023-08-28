@@ -89,11 +89,6 @@ nav .back img{
     padding-top: 25px;
 }
 
-/* nav .back i {
-    font-size: 50px;
-    color: #EBEF1E;
-} */
-
 nav .back span{
     font-family: 'Press Start 2P', cursive;
     color: #EBEF1E;
@@ -336,4 +331,8 @@ footer {
     font-size: 32px;
     color: white;
     text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+.selected-card {
+    border: 2px solid #ffffff; /* Couleur et épaisseur de la bordure */
 }

@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <i class="fa-sharp fa-solid fa-question interrogation"></i>
                     <img src="${element.image_url_pokemon}" alt="Photo de ${element.name_pokemon}">
                 </div>`;
+
+                 // Appeler la fonction pour activer la sélection de la carte
+    activateCardSelection();
         });
     }
 
@@ -120,15 +123,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Charger la liste des Pokémon lors du chargement de la page
     listPokemonLvl1();
 
-
     async function listPokedex() {
-
         const listPokedex = document.getElementById("pokedex")
-
         const response = await httpGet("http://localhost:8000/allPokedex")
-
         console.log(response);
-        
         response.forEach(data => {
             listPokedex.innerHTML += `
                                     <div class="listPokedex">
@@ -140,8 +138,78 @@ document.addEventListener("DOMContentLoaded", async function () {
                                      </div>
                                     `
         });
-        
+
     }
 
     listPokedex();
+
+    function activateCardSelection() {
+        const cards = document.querySelectorAll(".card");
+        console.log(cards);
+    
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                // Désélectionner toutes les cartes en supprimant la bordure
+                cards.forEach(otherCard => {
+                    otherCard.classList.remove("selected-card");
+                });
+    
+                // Ajouter la classe "selected-card" à la carte sélectionnée
+                card.classList.add("selected-card");
+    
+                // Récupérer l'ID du Pokémon sélectionné
+                const pokemonId = card.getAttribute("data-pokemon-id");
+                console.log("Carte sélectionnée avec l'ID : " + pokemonId);
+    
+                // Vous pouvez utiliser pokemonId comme vous le souhaitez, par exemple, l'envoyer avec le formulaire lorsque l'utilisateur le soumet.
+            });
+        });
+    }
+    
+  
+    const formulaire = document.getElementById("formulaire")
+
+    formulaire.addEventListener("submit", addUser);
+
+    async function addUser(event) {
+        event.preventDefault();
+
+        // Récupérer les données de l'utilisateur
+        const nom = document.getElementById("nom").value;
+
+        const pokemonId = document.querySelector(".selected-card").getAttribute("data-pokemon-id");
+
+        console.log(pokemonId);
+
+        console.log(nom);
+
+        const userData = {
+            username_user: nom,
+            id_pokemon: pokemonId
+        }
+
+        try {
+            const response = await fetch("http://localhost:8000/createUser" , {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify(userData),
+            });
+            setTimeout(() => {
+                window.location.reload();
+              }, 500);
+
+        } catch (error) {
+                    console.error("Erreur lors de l'envoi de la requête", error)
+        }
+
+        console.log(userData);
+    }
+    const deletes = document.querySelectorAll(".delete");
+
+    console.log(deletes);
+
+
+
 });

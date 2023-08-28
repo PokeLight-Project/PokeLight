@@ -81,7 +81,7 @@ const getAllPokemonLvl = (req, res) => {
 
 // getAllPokedex
 const getAllPokedex = (req, res) => {
-    const query = `SELECT user.username_user, pokemon.image_url_pokemon, user.level , pokemon.type_pokemon
+    const query = `SELECT user.username_user, pokemon.image_url_pokemon, user.level , pokemon.type_pokemon , pokemon.id_pokemon, user.id_user
     FROM pokedex
     JOIN user user ON pokedex.id_user = user.id_user
     JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;`;
