@@ -73,8 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
 
                 card.addEventListener("dragstart", (event) => {
-                    event.dataTransfer.setData("text/plain", JSON.stringify(element));
+                    event.dataTransfer.setData("text/html", JSON.stringify(element));
                     element.isInTeam = false;
+                    console.log(element);
                 });
 
                 showPokedex.appendChild(card);
@@ -111,19 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dragdropRed.addEventListener("dragover", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
-        event.dataTransfer.dropEffect = canDrop(data, dragdropRed) ? "move" : "none";
+        // const data = JSON.parse(event.dataTransfer.getData("text/html"));
+        // event.dataTransfer.dropEffect = canDrop(data, dragdropRed) ? "move" : "none";
     });
 
     dragdropFlora.addEventListener("dragover", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
-        event.dataTransfer.dropEffect = canDrop(data, dragdropFlora) ? "move" : "none";
+        console.log(event);
+        // const data = JSON.parse(event.dataTransfer.getData("text/html"));
+        // event.dataTransfer.dropEffect = canDrop(data, dragdropFlora) ? "move" : "none";
     });
 
     dragdropRed.addEventListener("drop", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        const data = JSON.parse(event.dataTransfer.getData("text/html"));
 
         if (canDrop(data, dragdropRed)) {
             addToTeam(data, dragdropRed);
@@ -133,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dragdropFlora.addEventListener("drop", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        const data = JSON.parse(event.dataTransfer.getData("text/html"));
 
         if (canDrop(data, dragdropFlora)) {
             addToTeam(data, dragdropFlora);
@@ -161,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             card.addEventListener("dragstart", (event) => {
-                event.dataTransfer.setData("text/plain", JSON.stringify(data));
+                event.dataTransfer.setData("text/html", JSON.stringify(data));
                 data.isInTeam = false;
             });
 
