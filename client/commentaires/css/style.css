@@ -1,0 +1,217 @@
+/* main {
+    box-shadow: -1px 1px 10px 3px red inset;
+}
+
+header {
+    box-shadow: -1px 1px 10px 3px rgb(255, 0, 234) inset;
+}
+
+.button-container {
+    box-shadow: -1px 1px 10px 3px rgb(251, 255, 0) inset;
+}
+
+.encadre {
+    box-shadow: -1px 1px 10px 3px rgb(0, 255, 106) inset;
+}
+
+section {
+    box-shadow: -1px 1px 10px 3px rgb(0, 225, 255) inset;
+}
+
+footer {
+    box-shadow: -1px 1px 10px 3px green inset;
+} */
+
+/*Général*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    width: 1440px;
+    height: 844px;
+    background-image: url(../../Imgs/lobby/test-arene.jpg);
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px;
+}
+
+section {
+    flex: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+/*Centrer les titres*/
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/*Boutons de menus en haut à droite*/
+.fa-solid {
+    margin: 0 10px;
+    font-size: 40px;
+    color: #888C92;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    cursor: pointer;
+}
+
+/*Police d'écriture*/
+.press-start-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 96px;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+    cursor: pointer;
+}
+
+.press-copyright-text,
+.fa-copyright {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    color: white;
+    text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;
+}
+
+/* Audio */
+audio {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: block;
+}
+
+/* Style des contrôles du lecteur */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+audio::-webkit-media-controls-panel {
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.encadre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 365px;
+    margin-right: 365px;
+    height: 600px;
+    border: 2px solid #333;
+    background: linear-gradient(#48B19E, #FFFFFF);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 40px;
+    gap: 20px;
+}
+
+h2 {
+    margin-top: 10px;
+    font-family: 'Frijole', cursive;
+    font-size: 40px;
+    color: #00770c;
+    text-shadow: -5px -5px 0 #000000, 5px -5px 0 #000000, -5px 5px 0 #000000, 5px 5px 0 #000000;
+}
+
+.comment-bubble {
+    height: 485px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 40px;
+    overflow-y: auto;
+    border: 2px solid black;
+}
+
+
+.comment-bubble::-webkit-scrollbar {
+    width: 10px; /* Largeur de la barre de défilement */
+}
+
+.comment-bubble::-webkit-scrollbar-thumb {
+    background-color: #000000; /* Couleur de la poignée */
+    border-radius: 5px; /* Arrondi de la poignée */
+    /* Réduire la hauteur de la poignée (barre de défilement) */
+    height: 20px; /* Ajustez cette valeur pour réduire la hauteur */
+}
+
+.comment-bubble::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Couleur du track */
+}
+
+
+
+.comment-text {
+    font-family: 'Mukta', sans-serif;
+    font-size: 20px;
+}
+
+#bottom-button {
+    margin-bottom: 20px;
+    padding: 7px 20px;
+    background-color: #2B980F;
+    color: #FFF;
+    font-family: Handjet;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#bottom-button:hover {
+    color: #000000;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 7px 20px;
+    width: 450px;
+    height: 60px;
+    background-color: #000000;
+    color: #EBEF1E;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+}
+
+.button:hover {
+    color: #f0f0f0;
+}
