@@ -24,27 +24,39 @@ rules.addEventListener("click", goToRules);
 
 
 
+// Fonction pour aller à la page "création"
+function goToCreate() {
+    window.location.href = "../creation/creation.html";
+}
+
+// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "fa-question"
+const create = document.querySelector(".press-start-text");
+create.addEventListener("click", goToCreate);
+
+
+
+
+
 /* Audio */
 document.addEventListener("DOMContentLoaded", function () {
     let audio = document.getElementById("myAudio");
     let muteButton = document.getElementById("muteButton");
     let Playing = false;
     muteButton.addEventListener("click", () => {
-
-    if (!Playing) {
-        audio.play();
-        Playing = true;
-        muteButton.classList.remove("fa-solid");
-        muteButton.classList.remove("fa-volume-xmark");
-        muteButton.classList.add("fa-solid");
-        muteButton.classList.add("fa-volume-high");
-    } else {
-        audio.pause();
-        Playing = false;
-        muteButton.classList.remove("fa-solid");
-        muteButton.classList.remove("fa-volume-high");
-        muteButton.classList.add("fa-solid");
-        muteButton.classList.add("fa-volume-xmark");
-    }
-    });
-})
+        if (!Playing) {
+            audio.play();
+            Playing = true;
+            muteButton.classList.remove("fa-solid");
+            muteButton.classList.remove("fa-volume-xmark");
+            muteButton.classList.add("fa-solid");
+            muteButton.classList.add("fa-volume-high");
+        } else {
+            audio.pause();
+            Playing = false;
+            muteButton.classList.remove("fa-solid");
+            muteButton.classList.remove("fa-volume-high");
+            muteButton.classList.add("fa-solid");
+            muteButton.classList.add("fa-volume-xmark");
+        }
+    })
+});
