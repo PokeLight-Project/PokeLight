@@ -9,18 +9,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    
+    height: 100vh; 
 }
 
 .size{
     position: relative;
     width: 1440px;
     height: 844px;
-}
-
-video {
-  
-    width: 1440px;
-    height: 844px;
+    background-color: #EBEF1E;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 0;
 }

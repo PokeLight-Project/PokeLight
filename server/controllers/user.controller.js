@@ -100,6 +100,18 @@ const getInfoOnePokemon = (req, res) => {
     })
 }
 
+const getBackGround = (req, res) => {
+    const query = 'SELECT * FROM `arena`';
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :" + err);
+            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
+
 // getAllPokemonLv1
 const getAllPokemonLvl = (req, res) => {
     const query = `SELECT *
@@ -162,5 +174,6 @@ module.exports = {
         getInfoOnePokemon,
          deleteOneUserPokedex,
           createTeamRed,
-            createTeamFlora
+            createTeamFlora,
+             getBackGround,
 }

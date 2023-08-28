@@ -26,4 +26,7 @@ router.post('/teamRed', userController.createTeamRed)
 // Inserer un user dans la table teamFlora
 router.post('/teamFlora', userController.createTeamFlora)
 
+// Obtenir les maps
+router.get('/getMap', userController.getBackGround)
+
 module.exports = router;
