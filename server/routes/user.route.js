@@ -20,4 +20,10 @@ router.post('/createUser', userController.createUserAndAddToPokedex)
 // Récupérer les informations d'un pokemon
 router.get('/onePokemon/:id', userController.getInfoOnePokemon)
 
+// Inserer un user dans la table teamRed
+router.post('/teamRed', userController.createTeamRed)
+
+// Inserer un user dans la table teamFlora
+router.post('/teamFlora', userController.createTeamFlora)
+
 module.exports = router;
