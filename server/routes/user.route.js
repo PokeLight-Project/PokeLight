@@ -11,8 +11,13 @@ router.get('/allPokemonLvl', userController.getAllPokemonLvl)
 // Get All Pokedex
 router.get('/allPokedex', userController.getAllPokedex)
 
+// Supprimer un utilisateur
+router.delete('/delete/:id', userController.deleteOneUserPokedex)
 
 // CreateUser
 router.post('/createUser', userController.createUserAndAddToPokedex)
+
+// Récupérer les informations d'un pokemon
+router.get('/onePokemon/:id', userController.getInfoOnePokemon)
 
 module.exports = router;

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <title>Règles</title>
+    <title>Présentation</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                 <h1 class="bungee-text-32">Qui sommes-nous ?</h1>
             </div>
             <div class="header-icons">
-                X
+                    X
             </div>
         </header>
 
@@ -31,15 +31,87 @@
         <div>
             <section>
                 <div class="three-column-container bungee-text-30">
-                    <div class="column1"><img src="../Imgs/presentation/alexis.png" alt="alexis"
-                            class="image-to-reduce-alexis">Alexis</div>
-                    <div class="column2"><img src="../Imgs/presentation/Charles-DEPS.png" alt="charles"
-                            class="image-to-reduce-charles">Charles</div>
-                    <div class="column3"><img src="../Imgs/presentation/seb.png" alt="seb" class="image-to-reduce-seb">Sébastien</div>
+                    <div class="column1">
+                        <img src="../Imgs/presentation/alexis.png" alt="alexis" class="image-to-reduce-alexis"
+                            onclick="openModalAlexis()">
+                        Alexis
+                    </div>
+                    <div class="column2">
+                        <img src="../Imgs/presentation/Charles-DEPS.png" alt="charles" class="image-to-reduce-charles"
+                            onclick="openModalCharles()">
+                        Charles
+                    </div>
+                    <div class="column3">
+                        <img src="../Imgs/presentation/seb.png" alt="seb" class="image-to-reduce-seb"
+                            onclick="openModalSeb()">
+                        Sébastien
+                    </div>
                 </div>
             </section>
         </div>
+
+        <div id="myModalAlexis" class="modal-alexis">
+            <div class="modal-content-alexis">
+                <span class="close" onclick="closeModalAlexis()">&times;</span>
+                <h1 class="modal-title">Alexis</h1>
+                <p>Le développeur web audacieux qui transforme l'univers des Pokémon en une réalité
+                    numérique captivante
+                    ! Depuis qu'il a posé les yeux sur son tout premier jeu Pokémon, Alexis a été pris au
+                    piège par la
+                    magie de cet univers. Aujourd'hui, il canalise cette passion inébranlable pour créer des
+                    jeux
+                    Pokémon en ligne qui enflamment l'imagination des joueurs. Armé de son arsenal de
+                    compétences en
+                    HTML, CSS et JavaScript.</p>
+                <br>
+                <p>Alexis code des aventures interactives palpitantes qui vous feront sentir comme un vrai
+                    Dresseur
+                    Pokémon. Toujours à la recherche de défis, il s'efforce de perfectionner ses compétences
+                    en
+                    résolvant chaque bug comme s'il capturait un Pokémon rare. Alors, préparez-vous à
+                    plonger dans un
+                    monde numérique plein de surprises avec Alexis, le développeur web qui transforme les
+                    rêves des
+                    Dresseurs en réalité virtuelle !</p>
+            </div>
+        </div>
+
+        <div id="myModalCharles" class="modal-charles">
+            <div class="modal-content-charles">
+                <span class="close" onclick="closeModalCharles()">&times;</span>
+                <h1 class="modal-title">Charles</h1>
+                <p>Le développeur web ultime pour les fans de Pokémon ! Depuis sa tendre enfance, Charles a rêvé de
+                    devenir un Dresseur Pokémon, et aujourd'hui, il réalise ce rêve en créant des jeux Pokémon en ligne
+                    époustouflants. Armé de ses compétences en HTML, CSS et JavaScript, Charles donne vie à des
+                    aventures en ligne interactives, inspirées de l'univers magique des Pokémon.</p>
+                <br>
+                <p>Toujours prêt à relever de nouveaux défis, Charles s'efforce de rendre chaque expérience de jeu
+                    fluide et sans bug. Sa passion pour le développement web se marie parfaitement avec son amour pour
+                    les Pokémon, et il ne cesse de surprendre les joueurs en améliorant sans cesse ses compétences pour
+                    créer des expériences de jeu inoubliables. Que l'aventure commence avec Charles, le développeur web
+                    qui attrape les bugs comme un vrai Dresseur attrape les Pokémon - en les éliminant tous !</p>
+            </div>
+        </div>
+
+        <div id="myModalSeb" class="modal-seb">
+            <div class="modal-content-seb">
+                <span class="close" onclick="closeModalSeb()">&times;</span>
+                <h1 class="modal-title">Sébastien</h1>
+                <p>Sébastien, le magicien du développement web qui apporte la magie de l'univers Pokémon sur vos écrans
+                    ! Depuis qu'il était enfant, Seb a été émerveillé par les aventures des Dresseurs Pokémon, et
+                    maintenant, il combine sa passion pour le codage avec son amour pour les Pokémon pour créer des jeux
+                    en ligne extraordinaires. Armé de ses compétences en HTML, CSS et JavaScript, Seb donne vie à des
+                    sites web interactifs qui défient toute imagination.</p>
+                <br>
+                <p>Il se considère comme un vrai Pokémon Ranger, traquant et éradiquant les bugs avec la même
+                    détermination qu'un Dresseur recherche ses Pokémon rares. Alors préparez vous à être émerveillés et
+                    à vivre des aventures palpitantes en compagnie de Seb, le développeur web qui capture l'essence
+                    magique des Pokémon à travers le code !</p>
+            </div>
+        </div>
     </main>
+
+    <script src="./js/app.js"></script>
 </body>
 
 </html>

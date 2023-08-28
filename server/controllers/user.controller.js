@@ -50,6 +50,19 @@ const getAllPokemon = (req, res) => {
     })
 }
 
+const getInfoOnePokemon = (req, res) => {
+    const pokemonId = req.params.id;
+    const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon, image_url_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
+    conn.query(query, (err, result)=> {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :" + err);
+            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
+
 // getAllPokemonLv1
 const getAllPokemonLvl = (req, res) => {
     const query = `SELECT *
@@ -68,7 +81,7 @@ const getAllPokemonLvl = (req, res) => {
 
 // getAllPokedex
 const getAllPokedex = (req, res) => {
-    const query = `SELECT user.username_user, pokemon.image_url_pokemon, user.level , pokemon.type_pokemon, pokemon.id_pokemon, user.id_user
+    const query = `SELECT user.username_user, pokemon.image_url_pokemon, user.level , pokemon.type_pokemon, pokemon.id_pokemon, user.id_user , pokemon.id_pokemon, user.id_user
     FROM pokedex
     JOIN user user ON pokedex.id_user = user.id_user
     JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;`;
@@ -83,7 +96,27 @@ const getAllPokedex = (req, res) => {
 }
 
 
+// DeleteOneUserPokedex
+const deleteOneUserPokedex = (req, res) => {
+    const userId = req.params.id;
+    if (!userId) {
+        return res.status(400).json({
+            error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
+        })
+    }
+    // Construction de la requête SQL pour supprimer l'utilisateur
+    let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
 
+    conn.query(query, (err) => {
+        if (err) {
+            console.error('Erreur lors de la suppression de l\'utilisateur');
+            res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
+        } else {
+            res.status(200).json({ message: 'Utilisateur supprimer' });
+        }
+    });
+
+}
 module.exports = {
-    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex
+    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon, deleteOneUserPokedex
 }
