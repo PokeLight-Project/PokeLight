@@ -13,8 +13,7 @@
 </head>
 
 <body>
-    <audio id="myAudio" loop src="../audio/Pokémon -All Title Themes [Generation 1-7]_SRubmXgbJUo.mp3"
-        ></audio>
+    <audio id="myAudio" loop src="../audio/Pokémon-All-Title-Themes-creation.mp3"></audio>
     <main class="size">
 
         <div class="carre">
@@ -40,22 +39,31 @@
         </nav>
 
         <div class="block">
-            <form action="">
+            <form id="formulaire">
                 <div class="inputName">
                     <label for="nom"></label>
                     <input name="nom" id="nom" type="text" placeholder="Nom de votre joueur" />
                 </div>
-                <p>Choisissez votre Pokémon</p>
-                <div id="pokemonLvl1"></div>
-                <div>
-                    <button></button>
-                    <button></button>
+                <p id="ChoixPokemon">Choisissez votre Pokémon</p>
+                <div id="pokemonLvl1">
+
+
+                </div>
+                <div class="positionButton">
+                    <input id="submit" type="submit" value="CREER UN JOUEUR">
+                    <button>Choix des équipes</button>
                 </div>
             </form>
         </div>
+        <div class="pokedex">
+            <div id="pokedex">
+
+            </div>
+        </div>
+        <footer>
+            <i class="fa-regular fa-copyright"><span class="press-copyright-text"> Copyright SAC</span></i>
+        </footer>
     </main>
-
-
     <script src="js/app.js"></script>
 </body>
 
