@@ -15,4 +15,7 @@ router.get('/allPokedex', userController.getAllPokedex)
 // CreateUser
 router.post('/createUser', userController.createUserAndAddToPokedex)
 
+// Récupérer les informations d'un pokemon
+router.get('/onePokemon/:id', userController.getInfoOnePokemon)
+
 module.exports = router;
