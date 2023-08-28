@@ -1,37 +1,24 @@
-// Fonction pour aller à la page présentation
-function goToPresentation() {
-    window.location.href = "../presentation/index.html";
-}
-
-// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "fa-people-group"
-const peopleGroupElement = document.querySelector(".fa-people-group");
-peopleGroupElement.addEventListener("click", goToPresentation);
-
-
-
-
-
-// Fonction pour aller à la page règles
-function goToRules() {
-    window.location.href = "../regles/index.html";
-}
-
-// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "fa-question"
-const rules = document.querySelector(".fa-question");
-rules.addEventListener("click", goToRules);
-
-
-
-
-
-// Fonction pour aller à la page "création"
+// Fonction pour aller à la page création
 function goToCreate() {
     window.location.href = "../creation/creation.html";
 }
 
-// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "fa-question"
-const create = document.querySelector(".press-start-text");
-create.addEventListener("click", goToCreate);
+// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "restart"
+const restart = document.querySelector(".restart");
+restart.addEventListener("click", goToCreate);
+
+
+
+
+
+// Fonction pour aller à la page Accueil
+function goToStart() {
+    window.location.href = "../Accueil/index.html";
+}
+
+// Ajouter un écouteur d'événement au clic sur l'élément avec la classe "exit"
+const exit = document.querySelector(".exit");
+exit.addEventListener("click", goToStart);
 
 
 
