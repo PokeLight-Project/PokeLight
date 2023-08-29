@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <img src="${element.image_url_pokemon}" alt="Photo de ${element.name_pokemon}">
                 </div>`;
 
-                 // Appeler la fonction pour activer la sélection de la carte
-    activateCardSelection();
+            // Appeler la fonction pour activer la sélection de la carte
+            activateCardSelection();
         });
     }
 
@@ -146,27 +146,27 @@ document.addEventListener("DOMContentLoaded", async function () {
     function activateCardSelection() {
         const cards = document.querySelectorAll(".card");
         console.log(cards);
-    
+
         cards.forEach(card => {
             card.addEventListener("click", () => {
                 // Désélectionner toutes les cartes en supprimant la bordure
                 cards.forEach(otherCard => {
                     otherCard.classList.remove("selected-card");
                 });
-    
+
                 // Ajouter la classe "selected-card" à la carte sélectionnée
                 card.classList.add("selected-card");
-    
+
                 // Récupérer l'ID du Pokémon sélectionné
                 const pokemonId = card.getAttribute("data-pokemon-id");
                 console.log("Carte sélectionnée avec l'ID : " + pokemonId);
-    
+
                 // Vous pouvez utiliser pokemonId comme vous le souhaitez, par exemple, l'envoyer avec le formulaire lorsque l'utilisateur le soumet.
             });
         });
     }
-    
-  
+
+
     const formulaire = document.getElementById("formulaire")
 
     formulaire.addEventListener("submit", addUser);
@@ -189,19 +189,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("http://localhost:8000/createUser" , {
+            const response = await fetch("http://localhost:8000/createUser", {
                 method: "POST",
                 headers: {
-                    "Content-Type" : "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(userData),
             });
             setTimeout(() => {
                 window.location.reload();
-              }, 500);
+            }, 500);
 
         } catch (error) {
-                    console.error("Erreur lors de l'envoi de la requête", error)
+            console.error("Erreur lors de l'envoi de la requête", error)
         }
 
         console.log(userData);

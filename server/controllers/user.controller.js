@@ -53,10 +53,10 @@ const getAllPokemon = (req, res) => {
 const getInfoOnePokemon = (req, res) => {
     const pokemonId = req.params.id;
     const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon, image_url_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
-    conn.query(query, (err, result)=> {
+    conn.query(query, (err, result) => {
         if (err) {
             console.error("Erreur lors de la récupération des données :" + err);
-            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
         } else {
             res.status(200).json(result)
         }
@@ -95,8 +95,42 @@ const getAllPokedex = (req, res) => {
     })
 }
 
+// Créer un nouveau message
+const createMessage = async (req, res) => {
+    const { content_message } = req.body;
+
+    if (!content_message) {
+        return res.status(400).json({
+            error: 'Contenu du message manquant'
+        });
+    }
+
+    try {
+        const createMessageQuery = 'INSERT INTO `message` (`content_message`) VALUES (?)';
+        await conn.query(createMessageQuery, [content_message]);
+
+        res.status(200).json({ message: 'Message enregistré avec succès' });
+    } catch (error) {
+        console.error('Erreur lors de la requête', error);
+        res.status(500).json({ error: 'Erreur lors de la requête' });
+    }
+};
+
+// Récupérer tous les messages
+const getAllMessages = (req, res) => {
+    const query = 'SELECT * FROM message';
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :", err);
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
+
 
 
 module.exports = {
-    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon
+    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon, createMessage, getAllMessages
 }

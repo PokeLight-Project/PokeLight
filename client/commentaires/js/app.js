@@ -47,3 +47,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
 });
+
+
+
+
+
+/* Envoie du message en BDD */
+document.addEventListener("DOMContentLoaded", function () {
+    const commentTextarea = document.getElementById("commentTextarea");
+    const sendButton = document.getElementById("bottom-button");
+
+    sendButton.addEventListener("click", function () {
+        const comment = commentTextarea.value;
+        console.log(comment)
+
+        if (comment.trim() !== "") {
+            const data = { content_message: comment };
+
+            fetch("http://localhost:8000/createMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("Comment saved successfully:", result);
+                commentTextarea.value = ""; // Réinitialise la valeur du textarea
+            })
+            .catch(error => {
+                console.error("Error saving comment:", error);
+            });
+        }
+    });
+});
