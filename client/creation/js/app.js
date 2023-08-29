@@ -128,24 +128,57 @@ document.addEventListener("DOMContentLoaded", async function () {
         const response = await httpGet("http://localhost:8000/allPokedex")
         console.log(response);
         response.forEach(data => {
+            console.log(data);
             listPokedex.innerHTML += `
                                     <div class="listPokedex">
                                             <p> ${data.username_user}</p>
                                             <img src="${data.image_url_pokemon}" alt="Photo du pokemon d'${data.username_user}">
-                                            <i class="fa-solid fa-trash-can delete"></i>
+                                            <i id="${data.id_user}" class="fa-solid fa-trash-can delete"></i>
                                             <div class="hp"></div>
                                             <p> LVL : ${data.level}</p>
                                      </div>
                                     `
+            const deletes = document.querySelectorAll(".delete");
+
+            console.log(deletes);
+
+            deletes.forEach(element => {
+                element.addEventListener("click", () => {
+                    console.log("coucou");
+                    console.log(element);
+
+                    const userId = element.id;
+                    console.log(userId);
+
+                    try {
+                        const response = fetch(`http://localhost:8000/delete/${userId}`, {
+                            method: "DELETE",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        })
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 500);
+                    } catch (err) {
+                        console.error("Erreur lors de l'envoi de la requête", error);
+                    }
+
+                })
+
+            });
+
         });
 
     }
+
+
 
     listPokedex();
 
     function activateCardSelection() {
         const cards = document.querySelectorAll(".card");
-        console.log(cards);
+        // console.log(cards);
 
         cards.forEach(card => {
             card.addEventListener("click", () => {
@@ -161,7 +194,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const pokemonId = card.getAttribute("data-pokemon-id");
                 console.log("Carte sélectionnée avec l'ID : " + pokemonId);
 
-                // Vous pouvez utiliser pokemonId comme vous le souhaitez, par exemple, l'envoyer avec le formulaire lorsque l'utilisateur le soumet.
             });
         });
     }
@@ -178,16 +210,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         const nom = document.getElementById("nom").value;
 
         const pokemonId = document.querySelector(".selected-card").getAttribute("data-pokemon-id");
-
         console.log(pokemonId);
-
         console.log(nom);
-
         const userData = {
             username_user: nom,
             id_pokemon: pokemonId
         }
-
         try {
             const response = await fetch("http://localhost:8000/createUser", {
                 method: "POST",
@@ -206,9 +234,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         console.log(userData);
     }
-    const deletes = document.querySelectorAll(".delete");
-
-    console.log(deletes);
 
 
 
