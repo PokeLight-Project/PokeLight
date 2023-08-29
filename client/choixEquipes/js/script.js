@@ -73,8 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
 
                 card.addEventListener("dragstart", (event) => {
-                    event.dataTransfer.setData("text/plain", JSON.stringify(element));
+                    event.dataTransfer.setData("text/html", JSON.stringify(element));
                     element.isInTeam = false;
+                    console.log(element);
                 });
 
                 showPokedex.appendChild(card);
@@ -111,19 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dragdropRed.addEventListener("dragover", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
-        event.dataTransfer.dropEffect = canDrop(data, dragdropRed) ? "move" : "none";
+        // const data = JSON.parse(event.dataTransfer.getData("text/html"));
+        // event.dataTransfer.dropEffect = canDrop(data, dragdropRed) ? "move" : "none";
     });
 
     dragdropFlora.addEventListener("dragover", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
-        event.dataTransfer.dropEffect = canDrop(data, dragdropFlora) ? "move" : "none";
+        console.log(event);
+        // const data = JSON.parse(event.dataTransfer.getData("text/html"));
+        // event.dataTransfer.dropEffect = canDrop(data, dragdropFlora) ? "move" : "none";
     });
 
     dragdropRed.addEventListener("drop", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        const data = JSON.parse(event.dataTransfer.getData("text/html"));
 
         if (canDrop(data, dragdropRed)) {
             addToTeam(data, dragdropRed);
@@ -133,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dragdropFlora.addEventListener("drop", (event) => {
         event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        const data = JSON.parse(event.dataTransfer.getData("text/html"));
 
         if (canDrop(data, dragdropFlora)) {
             addToTeam(data, dragdropFlora);
@@ -161,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             card.addEventListener("dragstart", (event) => {
-                event.dataTransfer.setData("text/plain", JSON.stringify(data));
+                event.dataTransfer.setData("text/html", JSON.stringify(data));
                 data.isInTeam = false;
             });
 
@@ -170,4 +172,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     getAllPokedex();
+
+
+
+
+
+
+
+    const combatBtn = document.getElementById("combat_btn");
+
+    function updateCombatButton() {
+        const hasRedPokemons = dragdropRed.querySelectorAll(".card").length > 0;
+        const hasFloraPokemons = dragdropFlora.querySelectorAll(".card").length > 0;
+
+        if (hasRedPokemons || hasFloraPokemons) {
+            combatBtn.style.backgroundColor = "#E70E0E";
+            combatBtn.disabled = false;
+        } else {
+            combatBtn.style.backgroundColor = "";
+            combatBtn.disabled = true;
+        }
+    }
+
+    combatBtn.addEventListener("click", () => {
+        // Ajoutez ici le code pour rediriger vers la page "combat"
+        window.location.href = "../combat/combat.html";
+    });
+
+    // Ajoutez cet appel pour mettre à jour le bouton au chargement de la page
+    updateCombatButton();
 });
