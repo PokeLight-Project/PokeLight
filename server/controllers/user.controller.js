@@ -196,13 +196,13 @@ const getInfoOnePokemon = (req, res) => {
             const query = `
         SELECT user.username_user, user.level,
         pokemon.image_url_pokemon, pokemon.id_pokemon,
-         pokemon.pv_pokemon, pokemon.pa_pokemon,
-          pokemon.name_pokemon, pokemon.type_pokemon,
-           pokemon.required_level
+        pokemon.pv_pokemon, pokemon.pa_pokemon,
+        pokemon.name_pokemon, pokemon.type_pokemon,
+        pokemon.required_level
             FROM teamflora
-             JOIN user ON teamred.id_user = user.id_user
-              JOIN pokedex ON user.id_user = pokedex.id_user
-               JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
+            JOIN user ON teamred.id_user = user.id_user
+            JOIN pokedex ON user.id_user = pokedex.id_user
+            JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
         `;
             const result = await conn.query(query);
 
@@ -227,3 +227,4 @@ const getInfoOnePokemon = (req, res) => {
         getTeamFloraInfo,
         getTeamRedInfo
     }
+}
