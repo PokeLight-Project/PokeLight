@@ -9,33 +9,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frijole&display=swap" rel="stylesheet">
     <title>Accueil</title>
 </head>
 
 <body>
-    <!-- <main>
+    <audio id="myAudio" loop src="../audio/Pokémon-All-Title-Themes-creation.mp3"></audio>
+    
+    <main id="backGround" class="size">
+
         <header>
-            <i class="fa-solid fa-people-group"></i>
-            <i class="fa-solid fa-volume-high"></i>
-            <i class="fa-sharp fa-solid fa-question"></i>
+            <i id="volume" class="fa-solid fa-volume-xmark"></i>
         </header>
 
-        <section class="start">
-            <h1 class="press-start-text">START</h1>
-        </section>
+        <div class="poketrainer">
+            <div class="red">
+                <div class="blockImg">
+                <img src="../Imgs/trainers/poké-trainer_5.jpg" alt="Photo de ">
+                </div>
+                <span>RED</span>
+                <div class="pokeball">
 
-        <footer class="center">
-            <i class="fa-regular fa-copyright"><span class="press-copyright-text"> Copyright SAC</span></i>
-        </footer>
-    </main> -->
+                </div>
+            </div>
+            <div class="flora">
+                <div class="blockImg">
+                <img src="../Imgs/trainers/poké-trainer_2.png" alt="">
+                </div>
+                <span>FLORA</span>
+                <div class="pokeball">
 
-    <main class="size">
-        <video autoplay loop muted>
-            <source src="../Accueil/video/Générique coupé pour la page Start.mp4" alt="generic" type="video/mp4">
-        </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="plateforme">
+
+        <div class="plateformeRed">
+            <img id="redGif" src="../Imgs/trainers/Red.gif" alt="">
+            <img id="redPlate" src="../Imgs/trainers/Red-platform.png" alt="">
+        </div>
+        <div>
+                <button id="start">START FIGHT</button>
+        </div>
+        <div class="plateformeFlora">
+            <img id="floraGif" src="../Imgs/trainers/Flora.gif" alt="">
+            <img id="floraPlate" src="../Imgs/trainers/Red-platform.png" alt="">
+        </div>
+       
+        </div>
     </main>
 
     
+
+    <script src="js/combat.js"></script>
 </body>
 
 </html>
