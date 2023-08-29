@@ -147,29 +147,7 @@ const deleteOneUserPokedex = (req, res) => {
             res.status(200).json({ message: 'Utilisateur supprimer' });
         }
     });
-
-    // DeleteOneUserPokedex
-    const deleteOneUserPokedex = (req, res) => {
-        const userId = req.params.id;
-        if (!userId) {
-            return res.status(400).json({
-                error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
-            })
-        }
-        // Construction de la requête SQL pour supprimer l'utilisateur
-        let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
-
-        conn.query(query, (err) => {
-            if (err) {
-                console.error('Erreur lors de la suppression de l\'utilisateur');
-                res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
-            } else {
-                res.status(200).json({ message: 'Utilisateur supprimer' });
-            }
-        });
-
-    }
 }
 module.exports = {
-    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon, createMessage, getAllMessages
+    getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon, createMessage, getAllMessages, deleteOneUserPokedex
 }
