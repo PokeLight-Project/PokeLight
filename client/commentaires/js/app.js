@@ -56,10 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const commentTextarea = document.getElementById("commentTextarea");
     const sendButton = document.getElementById("bottom-button");
+    const modal = document.getElementById("modal"); // Sélectionnez la modale
+    const modalMessage = document.getElementById("modalMessage"); // Sélectionnez l'élément pour afficher le message
+    const closeModal = document.getElementById("closeModal"); // Sélectionnez le bouton pour fermer la modale
 
     sendButton.addEventListener("click", function () {
         const comment = commentTextarea.value;
-        console.log(comment)
 
         if (comment.trim() !== "") {
             const data = { content_message: comment };
@@ -75,6 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(result => {
                 console.log("Comment saved successfully:", result);
                 commentTextarea.value = ""; // Réinitialise la valeur du textarea
+                modalMessage.textContent = "Message envoyé avec succès !"; // Met à jour le texte de la modale
+                modal.style.display = "block"; // Affiche la modale
+
+                closeModal.addEventListener("click", function () {
+                    modal.style.display = "none"; // Cache la modale lorsque le bouton est cliqué
+                });
+
+                window.addEventListener("click", function (event) {
+                    if (event.target === modal) {
+                        modal.style.display = "none"; // Cache la modale si l'utilisateur clique en dehors de la modale
+                    }
+                });
             })
             .catch(error => {
                 console.error("Error saving comment:", error);

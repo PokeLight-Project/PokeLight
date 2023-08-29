@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Frijole&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
-    <title>Accueil</title>
+    <title>Commentaires</title>
 </head>
 
 <body>
@@ -25,9 +25,17 @@
             <div class="encadre">
                 <h2>Qu'avez vous pensé de notre jeu ?</h2>
                 <form class="comment-bubble" action="/submit_comment" method="post">
-                    <textarea class="comment-text" name="comment" id="commentTextarea" placeholder="Entrez votre commentaire ici..."></textarea>
+                    <textarea class="comment-text" name="comment" id="commentTextarea"
+                        placeholder="Entrez votre commentaire ici..."></textarea>
                 </form>
                 <button id="bottom-button">Envoyer le message</button>
+
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModal" class="close">&times;</span>
+                        <p id="modalMessage">Message envoyé avec succès !</p>
+                    </div>
+                </div>
             </div>
             <div class="button-container">
                 <button class="button restart">Restart</button>
