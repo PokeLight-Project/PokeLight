@@ -128,81 +128,47 @@ const getAllMessages = (req, res) => {
         }
     })
 }
-
-// Créer un nouveau message
-const createMessage = async (req, res) => {
-    const { content_message } = req.body;
-
-    if (!content_message) {
+// DeleteOneUserPokedex
+const deleteOneUserPokedex = (req, res) => {
+    const userId = req.params.id;
+    if (!userId) {
         return res.status(400).json({
-            error: 'Contenu du message manquant'
-        });
+            error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
+        })
     }
+    // Construction de la requête SQL pour supprimer l'utilisateur
+    let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
 
-    try {
-        const createMessageQuery = 'INSERT INTO `message` (`content_message`) VALUES (?)';
-        await conn.query(createMessageQuery, [content_message]);
-
-        res.status(200).json({ message: 'Message enregistré avec succès' });
-    } catch (error) {
-        console.error('Erreur lors de la requête', error);
-        res.status(500).json({ error: 'Erreur lors de la requête' });
-    }
-};
-
-// Récupérer tous les messages
-const getAllMessages = (req, res) => {
-    const query = 'SELECT * FROM message';
-    conn.query(query, (err, result) => {
+    conn.query(query, (err) => {
         if (err) {
-            console.error("Erreur lors de la récupération des données :", err);
-            res.status(500).json({ error: "Erreur lors de la récupération des données" })
+            console.error('Erreur lors de la suppression de l\'utilisateur');
+            res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
         } else {
-            res.status(200).json(result)
+            res.status(200).json({ message: 'Utilisateur supprimer' });
         }
-    })
+    });
+
+// DeleteOneUserPokedex
+const deleteOneUserPokedex = (req, res) => {
+    const userId = req.params.id;
+    if (!userId) {
+        return res.status(400).json({
+            error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
+        })
+    }
+    // Construction de la requête SQL pour supprimer l'utilisateur
+    let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
+
+    conn.query(query, (err) => {
+        if (err) {
+            console.error('Erreur lors de la suppression de l\'utilisateur');
+            res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
+        } else {
+            res.status(200).json({ message: 'Utilisateur supprimer' });
+        }
+    });
+
 }
-
-// DeleteOneUserPokedex
-const deleteOneUserPokedex = (req, res) => {
-    const userId = req.params.id;
-    if (!userId) {
-        return res.status(400).json({
-            error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
-        })
-    }
-    // Construction de la requête SQL pour supprimer l'utilisateur
-    let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
-
-    conn.query(query, (err) => {
-        if (err) {
-            console.error('Erreur lors de la suppression de l\'utilisateur');
-            res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
-        } else {
-            res.status(200).json({ message: 'Utilisateur supprimer' });
-        }
-    });
-
-// DeleteOneUserPokedex
-const deleteOneUserPokedex = (req, res) => {
-    const userId = req.params.id;
-    if (!userId) {
-        return res.status(400).json({
-            error: 'ID de l\'utilisateur manquant dans les paramètres de la route',
-        })
-    }
-    // Construction de la requête SQL pour supprimer l'utilisateur
-    let query = `DELETE FROM pokedex WHERE id_user = ${userId}`
-
-    conn.query(query, (err) => {
-        if (err) {
-            console.error('Erreur lors de la suppression de l\'utilisateur');
-            res.status(500).json({ error: 'Erreur lors de la suppression de l\'utilisateur' });
-        } else {
-            res.status(200).json({ message: 'Utilisateur supprimer' });
-        }
-    });
-
 }
 module.exports = {
     getAllPokemon, getAllPokemonLvl, getAllPokedex, createUserAndAddToPokedex, getInfoOnePokemon, createMessage, getAllMessages
