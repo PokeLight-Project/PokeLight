@@ -36,7 +36,7 @@ const createUserAndAddToPokedex = async (req, res) => {
 };
 
 const createTeamRed = async (req, res) => {
-    const {id_user} = req.body;
+    const { id_user } = req.body;
     console.log(id_user)
     if (!id_user) {
         return res.status(400).json({
@@ -47,7 +47,7 @@ const createTeamRed = async (req, res) => {
     try {
         const queryInsertTeamRed = 'INSERT INTO `teamred` (`id_user`) VALUES (?)';
         await conn.query(queryInsertTeamRed, [id_user]);
-        res.status(200).json({ message : 'Utilisateur enregistré dans la team RED'})
+        res.status(200).json({ message: 'Utilisateur enregistré dans la team RED' })
     } catch (error) {
         console.error('Erreur lors de la requête', error);
         res.status(500).json({ error: 'Erreur lors de la requête' });
@@ -55,7 +55,7 @@ const createTeamRed = async (req, res) => {
 }
 
 const createTeamFlora = async (req, res) => {
-    const {id_user} = req.body;
+    const { id_user } = req.body;
 
     if (!id_user) {
         return res.status(400).json({
@@ -67,7 +67,7 @@ const createTeamFlora = async (req, res) => {
         const queryInsertTeamFlora = 'INSERT INTO `teamflora` (`id_user`) VALUES (?)';
         await conn.query(queryInsertTeamFlora, [id_user]);
 
-        res.status(200).json({ message : 'Utilisateur enregistré dans la team Flora'})
+        res.status(200).json({ message: 'Utilisateur enregistré dans la team Flora' })
     } catch (error) {
         console.error('Erreur lors de la requête', error);
         res.status(500).json({ error: 'Erreur lors de la requête' });
@@ -90,10 +90,10 @@ const getAllPokemon = (req, res) => {
 const getInfoOnePokemon = (req, res) => {
     const pokemonId = req.params.id;
     const query = `SELECT pv_pokemon, pa_pokemon, type_pokemon, image_url_pokemon FROM pokemon WHERE id_pokemon = ${pokemonId}`;
-    conn.query(query, (err, result)=> {
+    conn.query(query, (err, result) => {
         if (err) {
             console.error("Erreur lors de la récupération des données :" + err);
-            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
         } else {
             res.status(200).json(result)
         }
@@ -105,7 +105,7 @@ const getBackGround = (req, res) => {
     conn.query(query, (err, result) => {
         if (err) {
             console.error("Erreur lors de la récupération des données :" + err);
-            res.status(500).json({ error : "Erreur lors de la récupération des données" })
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
         } else {
             res.status(200).json(result)
         }
@@ -164,16 +164,65 @@ const deleteOneUserPokedex = (req, res) => {
             res.status(200).json({ message: 'Utilisateur supprimer' });
         }
     });
-
 }
+
+// Obtenez les informations sur les utilisateurs dans l'équipe "Red"
+const getTeamRedInfo = async (req, res) => {
+    try {
+        const query = `
+        SELECT user.username_user, user.level,
+         pokemon.image_url_pokemon, pokemon.id_pokemon,
+          pokemon.pv_pokemon, pokemon.pa_pokemon,
+           pokemon.name_pokemon, pokemon.type_pokemon,
+            pokemon.required_level
+             FROM teamred
+              JOIN user ON teamred.id_user = user.id_user
+               JOIN pokedex ON user.id_user = pokedex.id_user
+                JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
+        `;
+        const result = await conn.query(query);
+
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des informations de l\'équipe Red', error);
+        res.status(500).json({ error: 'Erreur lors de la récupération des informations de l\'équipe Red' });
+    }
+};
+
+// Obtenez les informations sur les utilisateurs dans l'équipe "Flora"
+const getTeamFloraInfo = async (req, res) => {
+    try {
+        const query = `
+        SELECT user.username_user, user.level,
+        pokemon.image_url_pokemon, pokemon.id_pokemon,
+         pokemon.pv_pokemon, pokemon.pa_pokemon,
+          pokemon.name_pokemon, pokemon.type_pokemon,
+           pokemon.required_level
+            FROM teamflora
+             JOIN user ON teamred.id_user = user.id_user
+              JOIN pokedex ON user.id_user = pokedex.id_user
+               JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
+        `;
+        const result = await conn.query(query);
+
+        res.status(200).json(result);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des informations de l\'équipe Flora', error);
+        res.status(500).json({ error: 'Erreur lors de la récupération des informations de l\'équipe Flora' });
+    }
+};
+
+
 module.exports = {
     getAllPokemon,
-     getAllPokemonLvl,
-      getAllPokedex,
-       createUserAndAddToPokedex,
-        getInfoOnePokemon,
-         deleteOneUserPokedex,
-          createTeamRed,
-            createTeamFlora,
-             getBackGround,
+    getAllPokemonLvl,
+    getAllPokedex,
+    createUserAndAddToPokedex,
+    getInfoOnePokemon,
+    deleteOneUserPokedex,
+    createTeamRed,
+    createTeamFlora,
+    getBackGround,
+    getTeamFloraInfo,
+    getTeamRedInfo
 }

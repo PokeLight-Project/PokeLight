@@ -16,7 +16,6 @@ body{
     position: relative;
     width: 1440px;
     height: 844px;
-    background-color: #EBEF1E;
     background-position: center center;
     background-size: cover;
     border-radius: 5px;
@@ -124,6 +123,17 @@ z-index: 2;
 .plateformeFlora #floraPlate{
     transform: rotate(180deg);
     z-index: -1;
+}
+
+
+#start{
+    font-family: 'Frijole', cursive;
+    background: none;
+    border: none;
+    color: #FF0000;
+    font-size: 45px;
+    text-shadow: -6px -6px 0 #000000, 5px -5px 0 #000000, -5px 5px 0 #000000, 5px 5px 0 #000000;
+    cursor: pointer;
 }
 
 

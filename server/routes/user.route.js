@@ -29,4 +29,10 @@ router.post('/teamFlora', userController.createTeamFlora)
 // Obtenir les maps
 router.get('/getMap', userController.getBackGround)
 
+// Obtenir les informations sur les utilisateurs de l'équipe Flora
+router.get("/getTeamFlora", userController.getTeamFloraInfo)
+
+// Obtenir les informations sur les utilisateurs de l'équipe Red
+router.get("/getTeamRed", userController.getTeamRedInfo)
+
 module.exports = router;
