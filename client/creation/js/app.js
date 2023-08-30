@@ -244,6 +244,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log(userData);
     }
 
+    let choixEquipe = document.getElementById("choixEquipe")
+
+    choixEquipe.addEventListener("click", () => {
+        window.location.href = "../choixEquipes/equipes.html";
+    })
 
 
 });
