@@ -106,10 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const existingCard = document.querySelector(`[data-pokemon='${JSON.stringify(data)}']`);
 
             if (container.classList.contains("dragdrop_red") || container.classList.contains("dragdrop_flora")) {
-
                 if (container.childElementCount < 5) {
                     if (existingCard) {
                         container.appendChild(existingCard);
+                        const userId = data.id_user;
+                        const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
+                        sendTeamData(userId, teamId);
                         sortCardsAlphabetically(container); // Tri après ajout
                     } else {
                         const newCard = document.createElement("div");
@@ -127,10 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         `;
 
                         container.appendChild(newCard);
+                        const userId = data.id_user;
+                        const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
+                        sendTeamData(userId, teamId);
                         sortCardsAlphabetically(container); // Tri après ajout
                     }
 
-                    // Vérifier si les équipes contiennent au moins un pokémon
                     const redTeam = document.querySelectorAll(".dragdrop_red .card");
                     const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
 
@@ -152,4 +156,62 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    combatButton.addEventListener("click", () => {
+        const redTeam = document.querySelectorAll(".dragdrop_red .card");
+        const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
+
+        console.log(redTeam);
+        console.log(floraTeam);
+        if (redTeam.length > 0 && floraTeam.length > 0) {
+            redTeam.forEach((card) => {
+                const userId = card.dataset.id;
+                sendTeamData(userId, "teamred");
+                console.log(userId);
+            });
+
+            floraTeam.forEach((card) => {
+                const userId = card.dataset.id;
+                sendTeamData(userId, "teamflora");
+                console.log(userId);
+            });
+
+            redTeam.forEach((card) => {
+                card.remove();
+            });
+            floraTeam.forEach((card) => {
+                card.remove();
+            });
+
+            combatButton.disabled = true;
+            combatButton.style.backgroundColor = "";
+
+            window.location.href = "../combat/combat.html"
+        }
+    });
+
+    function sendTeamData(userId, teamId) {
+        const url = `http://localhost:8000/${teamId}`;
+        const data = {
+            id_user: userId
+        };
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`User ${userId} added to ${teamId}`);
+                } else {
+                    console.error(`Failed to add user ${userId} to ${teamId}`);
+                }
+            })
+            .catch(error => {
+                console.error("Error sending team data:", error);
+            });
+    }
 });
