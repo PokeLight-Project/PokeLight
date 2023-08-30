@@ -167,29 +167,6 @@ const getTeamRedInfo = async (req, res) => {
        });
 };
 
-// Obtenez les informations sur les utilisateurs dans l'équipe "Red"
-const getTeamRedInfo = async (req, res) => {
-        const query = `
-        SELECT user.username_user, user.level,
-         pokemon.image_url_pokemon, pokemon.id_pokemon,
-          pokemon.pv_pokemon, pokemon.pa_pokemon,
-           pokemon.name_pokemon, pokemon.type_pokemon,
-            pokemon.required_level
-             FROM teamred
-              JOIN user ON teamred.id_user = user.id_user
-               JOIN pokedex ON user.id_user = pokedex.id_user
-                JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
-        `;
-       conn.query(query, (err, result) => {
-        if (err) {
-            console.error("Erreur lors de la récupération des données :" + err);
-            res.status(500).json({ error: "Erreur lors de la récupération des données" })
-        } else {
-            res.status(200).json(result)
-        }
-       });
-};
-
 // Créer un nouveau message
 const createMessage = async (req, res) => {
     const { content_message } = req.body;
