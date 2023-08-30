@@ -27,11 +27,6 @@ app.use(cors({
     optionsSuccessStatus: 200
 }));
 
-// Vérification de mon localHost en affichant le message Hello World
-// app.get('/', (req,res) => {
-//     res.send('Hello World')
-// });
-
 app.use('/', userRoutes)
 
 // Configuration et lancement du serveur

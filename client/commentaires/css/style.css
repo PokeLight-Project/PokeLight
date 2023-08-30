@@ -18,9 +18,13 @@ section {
     box-shadow: -1px 1px 10px 3px rgb(0, 225, 255) inset;
 }
 
+#successMessage {
+    box-shadow: -1px 1px 10px 3px rgb(255, 0, 106) inset;
+} */
+
 footer {
     box-shadow: -1px 1px 10px 3px green inset;
-} */
+}
 
 /*Général*/
 * {
@@ -146,11 +150,6 @@ h2 {
     height: 485px;
     margin-left: 100px;
     margin-right: 100px;
-    /* background-color: #f0f0f0; */
-    /* padding: 10px; */
-    /* border-radius: 40px; */
-    /* overflow-y: auto; */
-    /* border: 2px solid black; */
 }
 
 .comment-bubble textarea {
@@ -223,4 +222,54 @@ h2 {
 
 .button:hover {
     color: #f0f0f0;
+}
+
+/* Stylise la modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Stylise le contenu de la modale */
+.modal-content {
+    background: linear-gradient(#48B19E, #FFFFFF);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    font-family: Handjet;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 25px;
+    position: relative;
+}
+
+/* Stylise le bouton pour fermer la modale */
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Stylise le message */
+#modalMessage {
+    margin-bottom: 0;
+}
+
+/* Réduit la marge du message en haut */
+.modal-content p:first-child {
+    margin-top: 0;
 }

@@ -167,7 +167,62 @@ const getTeamRedInfo = async (req, res) => {
        });
 };
 
+// Obtenez les informations sur les utilisateurs dans l'équipe "Red"
+const getTeamRedInfo = async (req, res) => {
+        const query = `
+        SELECT user.username_user, user.level,
+         pokemon.image_url_pokemon, pokemon.id_pokemon,
+          pokemon.pv_pokemon, pokemon.pa_pokemon,
+           pokemon.name_pokemon, pokemon.type_pokemon,
+            pokemon.required_level
+             FROM teamred
+              JOIN user ON teamred.id_user = user.id_user
+               JOIN pokedex ON user.id_user = pokedex.id_user
+                JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
+        `;
+       conn.query(query, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :" + err);
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+       });
+};
 
+// Créer un nouveau message
+const createMessage = async (req, res) => {
+    const { content_message } = req.body;
+
+    if (!content_message) {
+        return res.status(400).json({
+            error: 'Contenu du message manquant'
+        });
+    }
+
+    try {
+        const createMessageQuery = 'INSERT INTO `message` (`content_message`) VALUES (?)';
+        await conn.query(createMessageQuery, [content_message]);
+
+        res.status(200).json({ message: 'Message enregistré avec succès' });
+    } catch (error) {
+        console.error('Erreur lors de la requête', error);
+        res.status(500).json({ error: 'Erreur lors de la requête' });
+    }
+};
+
+// Récupérer tous les messages
+const getAllMessages = (req, res) => {
+    const query = 'SELECT * FROM message';
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :", err);
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
 // DeleteOneUserPokedex
 const deleteOneUserPokedex = (req, res) => {
     const userId = req.params.id;
@@ -226,5 +281,6 @@ module.exports = {
     createTeamFlora,
     getBackGround,
     getTeamFloraInfo,
-    getTeamRedInfo
+    getTeamRedInfo,
+ createMessage, getAllMessages, deleteOneUserPokedex
 }
