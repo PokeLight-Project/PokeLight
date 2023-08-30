@@ -63,8 +63,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Appeler la fonction pour activer la sélection de la carte
             activateCardSelection();
-            // Appeler la fonction pour activer la sélection de la carte
-            activateCardSelection();
         });
     }
 
@@ -189,10 +187,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     otherCard.classList.remove("selected-card");
                 });
 
-
                 // Ajouter la classe "selected-card" à la carte sélectionnée
                 card.classList.add("selected-card");
-
 
                 // Récupérer l'ID du Pokémon sélectionné
                 const pokemonId = card.getAttribute("data-pokemon-id");
@@ -201,8 +197,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
         });
     }
-
-
 
 
     const formulaire = document.getElementById("formulaire")
@@ -224,7 +218,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
         try {
             const response = await fetch("http://localhost:8000/createUser", {
-            const response = await fetch("http://localhost:8000/createUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -234,10 +227,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             setTimeout(() => {
                 window.location.reload();
             }, 500);
-            }, 500);
 
         } catch (error) {
-            console.error("Erreur lors de l'envoi de la requête", error)
             console.error("Erreur lors de l'envoi de la requête", error)
         }
 
