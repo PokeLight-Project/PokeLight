@@ -134,6 +134,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     container.appendChild(existingCard);
                 }
             }
+
+            // Vérifier à nouveau si les équipes contiennent au moins un pokémon
+            const redTeam = document.querySelectorAll(".dragdrop_red .card");
+            const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
+
+            if (redTeam.length > 0 && floraTeam.length > 0) {
+                combatButton.disabled = false;
+                combatButton.style.backgroundColor = "#e70e0e";
+            } else {
+                combatButton.disabled = true;
+                combatButton.style.backgroundColor = "";
+            }
         });
     });
 });
