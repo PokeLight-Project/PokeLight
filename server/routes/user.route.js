@@ -20,4 +20,10 @@ router.post('/createUser', userController.createUserAndAddToPokedex)
 // Récupérer les informations d'un pokemon
 router.get('/onePokemon/:id', userController.getInfoOnePokemon)
 
+// Create Message
+router.post('/createMessage', userController.createMessage)
+
+// Get All Messages
+router.get('/allMessages', userController.getAllMessages)
+
 module.exports = router;
