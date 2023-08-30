@@ -35,4 +35,10 @@ router.get("/getTeamFlora", userController.getTeamFloraInfo)
 // Obtenir les informations sur les utilisateurs de l'équipe Red
 router.get("/getTeamRed", userController.getTeamRedInfo)
 
+// Create Message
+router.post('/createMessage', userController.createMessage)
+
+// Get All Messages
+router.get('/allMessages', userController.getAllMessages)
+
 module.exports = router;
