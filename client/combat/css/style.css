@@ -9,18 +9,299 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    
+    height: 100vh; 
 }
 
 .size{
     position: relative;
     width: 1440px;
     height: 844px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 0;
 }
 
-video {
-  
-    width: 1440px;
-    height: 844px;
+header{
+    display: flex;
+    justify-content: flex-end;
 }
+
+header #volume{
+    font-size: 40px;
+    margin: 15px;
+    color: #888e92;
+    -webkit-text-stroke: 1px black;
+}
+
+.poketrainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.red{
+    width: 350px;
+    background-color: #FF6464;
+    display: flex;
+    border: 6px solid black;
+    flex-wrap: wrap;
+}
+
+.blockImg{
+padding: 5px;
+}
+
+.blockImg img {
+    width: 80px;
+    border: 2px solid black;
+}
+
+
+.red span {
+    font-family: 'Frijole', cursive;
+    width: 72%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+
+.plateformeRed #redGif {
+    width: 100px;
+    }
+
+    .plateformeRed #redPlate{
+        position: relative;
+        z-index: -1;
+        top: 56px;
+        left: -104px;
+    }
+
+
+
+.flora{
+    width: 350px;
+    background-color: #FF6464;
+    display: flex;
+    border: 6px solid black;
+    flex-wrap: wrap;
+}
+
+.flora img {
+    /* width: 80px; */
+}
+
+.flora span {
+    font-family: 'Frijole', cursive;
+    width: 72%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.plateforme{
+    margin-top: 18px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plateformeFlora{
+    margin-top: 54px;
+}
+
+
+
+.plateformeFlora #floraGif{
+width: 75px;
+position: relative;
+left: 217px;
+z-index: 2;
+    top: -54px;
+}
+
+.plateformeFlora #floraPlate{
+    transform: rotate(180deg);
+    z-index: -1;
+}
+
+
+#start{
+    font-family: 'Frijole', cursive;
+    background: none;
+    border: none;
+    color: #FF0000;
+    font-size: 45px;
+    text-shadow: -6px -6px 0 #000000, 5px -5px 0 #000000, -5px 5px 0 #000000, 5px 5px 0 #000000;
+    cursor: pointer;
+}
+
+.blockCombat{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#teamRed{
+    margin-top: 93px;
+    position: relative;
+    width: 650px;
+    height: 250px;
+    /* background-color: #888e92; */
+    /* border: 3px solid black; */
+    display: flex;
+}
+
+#pokemonRed1{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+#pokemonRed2{
+    position: absolute;
+    bottom: 35%;
+    left: 20%;
+}
+
+#pokemonRed3{
+    position: absolute;
+    bottom: 5%;
+    left: 35%;
+}
+
+#pokemonRed4{
+    position: absolute;
+    bottom: 35%;
+    left: 55%;
+}
+
+#pokemonRed5{
+    position: absolute;
+    bottom: 5%;
+    left: 70%;
+}
+
+#pokemonFlora1{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+#pokemonFlora2{
+    position: absolute;
+    bottom: 35%;
+    left: 20%;
+}
+
+#pokemonFlora3{
+    position: absolute;
+    bottom: 5%;
+    left: 35%;
+}
+
+#pokemonFlora4{
+    position: absolute;
+    bottom: 35%;
+    left: 55%;
+}
+
+#pokemonFlora5{
+    position: absolute;
+    bottom: 5%;
+    left: 70%;
+}
+
+.pokemonTeamRed p {
+    color: #FFC700;
+    font-family: 'Frijole', cursive;
+    text-shadow: -2px -2px 0 #000000,
+                 2px -2px 0 #000000,
+                 -2px 2px 0 #000000,
+                  2px 2px 0 #000000;
+}
+
+.pokemonTeamRed img{
+    width: 75px;
+    transform: scaleX(-1);
+}
+
+.pokemonTeamFlora p{
+    color: #FFC700;
+    font-family: 'Frijole', cursive;
+    text-shadow: -2px -2px 0 #000000,
+                 2px -2px 0 #000000,
+                 -2px 2px 0 #000000,
+                  2px 2px 0 #000000;
+}
+
+.pokemonTeamFlora img{
+    width: 75px;
+}
+
+
+#teamFlora{
+    margin-top: 93px;
+    position: relative;
+    width: 650px;
+    height: 250px;
+    /* background-color: #888e92; */
+    /* border: 3px solid black; */
+    display: flex;
+}
+
+#pokeballRed{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#pokeballFlora{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.pokeball{
+    width: 50px;
+    height: 50px;
+    background-image: url(../../Imgs/pokéball.png);
+    background-size: cover;
+    /* z-index: 20; */
+    display: flex;
+    justify-content: center;
+}
+
+.imgPokeball{
+    height: 35px;
+    margin-top: 5px;
+}
+
+.imgPokeball img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hp{
+    position: absolute;
+    width: 100px;
+    height: 10px;
+    background-color: #00FD56;
+    z-index: 2;
+    border: 1px solid black;
+}
+
+.hpRed{
+    position: relative;
+    width: 100px;
+    height: 10px;
+    background-color: #ff0000;
+}
+
+
+
