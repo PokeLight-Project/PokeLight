@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (redTeam.length > 0 && floraTeam.length > 0) {
                         combatButton.disabled = false;
-                        combatButton.style.backgroundColor = "red";
+                        combatButton.style.backgroundColor = "#e70e0e";
                     } else {
                         combatButton.disabled = true;
                         combatButton.style.backgroundColor = "";
