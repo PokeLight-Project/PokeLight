@@ -93,103 +93,143 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 showPokedex.appendChild(card);
             });
+
+            sortCardsAlphabetically(showPokedex); // Tri initial
         });
     }
     getAllPokedex();
 
-    const containers = document.querySelectorAll(".dragdrop_red, .container_middle, .dragdrop_flora");
-    const combatButton = document.getElementById("combat_btn");
-
-    containers.forEach((container) => {
-        container.addEventListener("dragover", (e) => {
-            e.preventDefault();
+    function sortCardsAlphabetically(container) {
+        const cards = Array.from(container.querySelectorAll(".card"));
+        cards.sort((a, b) => {
+            const nameA = JSON.parse(a.getAttribute("data-pokemon")).username_user.toLowerCase();
+            const nameB = JSON.parse(b.getAttribute("data-pokemon")).username_user.toLowerCase();
+            return nameA.localeCompare(nameB);
         });
+        container.innerHTML = "";
+        cards.forEach(card => container.appendChild(card));
+    }
 
-        container.addEventListener("drop", (e) => {
-            e.preventDefault();
-            const data = JSON.parse(e.dataTransfer.getData("text/plain"));
+    const containers = document.querySelectorAll(".dragdrop_red, .container_middle, .dragdrop_flora");
+const combatButton = document.getElementById("combat_btn");
 
-            const existingCard = document.querySelector(`[data-pokemon='${JSON.stringify(data)}']`);
+containers.forEach((container) => {
+    container.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
 
-            if (container.classList.contains("dragdrop_red") || container.classList.contains("dragdrop_flora")) {
-                if (container.childElementCount < 5) {
-                    if (existingCard) {
-                        container.appendChild(existingCard);
-                        const userId = data.id_user;
-                        const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
-                        sendTeamData(userId, teamId);
-                    } else {
-                        const newCard = document.createElement("div");
-                        newCard.className = "card";
-                        newCard.style = determineColor(data.type_pokemon);
-                        newCard.draggable = true;
-                        newCard.isInTeam = false;
-                        newCard.dataset.id = data.id_user;
-                        newCard.setAttribute("data-pokemon", JSON.stringify(data));
+    container.addEventListener("drop", (e) => {
+        e.preventDefault();
+        const data = JSON.parse(e.dataTransfer.getData("text/plain"));
 
-                        newCard.innerHTML = `
-                            <p>${data.username_user}</p>
-                            <img src="${data.image_url_pokemon}" alt="Photo du Pokémon de ${data.username_user}">
-                            <p>LVL ${data.level}</p>
-                        `;
+        const existingCard = document.querySelector(`[data-pokemon='${JSON.stringify(data)}']`);
 
-                        container.appendChild(newCard);
-                        const userId = data.id_user;
-                        const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
-                        sendTeamData(userId, teamId);
-                    }
-
-                    const redTeam = document.querySelectorAll(".dragdrop_red .card");
-                    const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
-
-                    if (redTeam.length > 0 && floraTeam.length > 0) {
-                        combatButton.disabled = false;
-                        combatButton.style.backgroundColor = "#e70e0e";
-                    } else {
-                        combatButton.disabled = true;
-                        combatButton.style.backgroundColor = "";
-                    }
-                } else {
-                    alert("Max 5 pokémons par équipe !");
-                }
-            } else {
+        if (container.classList.contains("dragdrop_red") || container.classList.contains("dragdrop_flora")) {
+            if (container.childElementCount < 5) {
                 if (existingCard) {
                     container.appendChild(existingCard);
+                    const userId = data.id_user;
+                    const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
+                    sendTeamData(userId, teamId);
+                    sortCardsAlphabetically(container); // Tri après ajout
+                } else {
+                    const newCard = document.createElement("div");
+                    newCard.className = "card";
+                    newCard.style = determineColor(data.type_pokemon);
+                    newCard.draggable = true;
+                    newCard.isInTeam = false;
+                    newCard.dataset.id = data.id_user;
+                    newCard.setAttribute("data-pokemon", JSON.stringify(data));
+
+                    newCard.innerHTML = `
+                        <p>${data.username_user}</p>
+                        <img src="${data.image_url_pokemon}" alt="Photo du Pokémon de ${data.username_user}">
+                        <p>LVL ${data.level}</p>
+                    `;
+
+                    container.appendChild(newCard);
+                    const userId = data.id_user;
+                    const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
+                    sendTeamData(userId, teamId);
+                    sortCardsAlphabetically(container); // Tri après ajout
                 }
+
+                const redTeam = document.querySelectorAll(".dragdrop_red .card");
+                const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
+
+                if (redTeam.length > 0 && floraTeam.length > 0) {
+                    combatButton.disabled = false;
+                    combatButton.style.backgroundColor = "#e70e0e";
+                } else {
+                    combatButton.disabled = true;
+                    combatButton.style.backgroundColor = "";
+                }
+            } else {
+                alert("Max 5 pokémons par équipe !");
             }
-        });
+        } else {
+            if (existingCard) {
+                container.appendChild(existingCard);
+                sortCardsAlphabetically(container); // Tri après retrait
+            }
+        }
     });
+});
+
+    // Supprime les données dans les tables "teamred" et "teamflora"
+function clearTeamData() {
+    const url = "http://localhost:8000/clearTeams";
+
+    fetch(url, {
+        method: "DELETE"
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("Cleared team data successfully");
+            } else {
+                console.error("Failed to clear team data");
+            }
+        })
+        .catch(error => {
+            console.error("Error clearing team data:", error);
+        });
+}
+
+clearTeamData();
 
     combatButton.addEventListener("click", () => {
         const redTeam = document.querySelectorAll(".dragdrop_red .card");
         const floraTeam = document.querySelectorAll(".dragdrop_flora .card");
-
-        console.log(redTeam);
-        console.log(floraTeam);
+    
+        // Clear previous Pokémon teams
+        document.querySelector(".dragdrop_red").innerHTML = "";
+        document.querySelector(".dragdrop_flora").innerHTML = "";
+    
+        const addedUsers = new Set(); // To track added users
+    
         if (redTeam.length > 0 && floraTeam.length > 0) {
             redTeam.forEach((card) => {
                 const userId = card.dataset.id;
-                sendTeamData(userId, "teamred");
-                console.log(userId);
+    
+                if (!addedUsers.has(userId)) { // Check if the user has been added before
+                    sendTeamData(userId, "teamred");
+                    addedUsers.add(userId);
+                }
             });
-
+    
             floraTeam.forEach((card) => {
                 const userId = card.dataset.id;
-                sendTeamData(userId, "teamflora");
-                console.log(userId);
+    
+                if (!addedUsers.has(userId)) { // Check if the user has been added before
+                    sendTeamData(userId, "teamflora");
+                    addedUsers.add(userId);
+                }
             });
-
-            redTeam.forEach((card) => {
-                card.remove();
-            });
-            floraTeam.forEach((card) => {
-                card.remove();
-            });
-
+    
             combatButton.disabled = true;
             combatButton.style.backgroundColor = "";
-
-            window.location.href = "../combat/combat.html"
+    
+            window.location.href = "../combat/combat.html";
         }
     });
 

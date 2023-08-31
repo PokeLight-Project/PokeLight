@@ -41,4 +41,7 @@ router.post('/createMessage', userController.createMessage)
 // Get All Messages
 router.get('/allMessages', userController.getAllMessages)
 
+// Route pour supprimer les données dans les tables "teamred" et "teamflora"
+router.delete('/clearTeams', userController.clearTeams);
+
 module.exports = router;
