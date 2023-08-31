@@ -246,6 +246,22 @@ const getTeamFloraInfo = async (req, res) => {
     });
 };
 
+// Supprime les données dans les tables "teamred" et "teamflora"
+const clearTeams = async (req, res) => {
+    try {
+        // Supprime toutes les données de la table "teamred"
+        await conn.query("DELETE FROM teamred");
+
+        // Supprime toutes les données de la table "teamflora"
+        await conn.query("DELETE FROM teamflora");
+
+        res.status(200).json({ message: "Team data cleared successfully" });
+    } catch (error) {
+        console.error("Error clearing team data:", error);
+        res.status(500).json({ error: "An error occurred while clearing team data" });
+    }
+};
+
 
 module.exports = {
     getAllPokemon,
@@ -259,5 +275,8 @@ module.exports = {
     getBackGround,
     getTeamFloraInfo,
     getTeamRedInfo,
-    createMessage, getAllMessages, deleteOneUserPokedex
+    createMessage,
+    getAllMessages,
+    deleteOneUserPokedex,
+    clearTeams
 }
