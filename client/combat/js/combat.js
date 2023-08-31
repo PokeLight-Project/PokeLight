@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             // Afficher la Pokéball pour chaque Pokémon de l'équipe Red
             pokeballRed.innerHTML += `<div class="pokeball">
-                <img class="imgPokeball" src="${data.image_url_pokemon}" alt="photo du pokemon ${data.name_pokemon}"/>
+                <img class="imgPokeballRed" src="${data.image_url_pokemon}" alt="photo du pokemon ${data.name_pokemon}"/>
             </div>`;
         });
     }
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             id++;
             // Afficher la Pokéball pour chaque Pokémon de l'équipe Flora
             pokeballFlora.innerHTML += `<div class="pokeball">
-                <img class="imgPokeball" src="${data.image_url_pokemon}" alt="photo du pokemon ${data.name_pokemon}"/>
+                <img class="imgPokeballFlora" src="${data.image_url_pokemon}" alt="photo du pokemon ${data.name_pokemon}"/>
             </div>`;
         });
     }
@@ -134,38 +134,51 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let isBattleInProgress = false;
 
-         // Fonction pour simuler une attaque
-    function simulateAttack(attacker, defender) {
-        if (isBattleInProgress) {
-            return; // Évitez les attaques simultanées
+    // Fonction pour vérifier si un Pokémon est KO en fonction de ses PV
+    function isPokemonKO(pokemon) {
+        const hpElement = pokemon.querySelector(".pv_pokemon");
+        if (hpElement) {
+            const currentHP = parseInt(hpElement.getAttribute("data-hp"));
+            return currentHP <= 0;
         }
+        return false;
+    }
 
-        isBattleInProgress = true;
+   
 
-        // Ajouter la classe attaqueActif au Pokémon attaquant
-        attacker.classList.add("attaqueActif");
-        // Ajouter la classe defendActif au Pokémon défendant
-        defender.classList.add("defendActif");
+// Fonction pour simuler une attaque
+function simulateAttack(attacker, defender) {
+    if (isBattleInProgress) {
+        return; // Évitez les attaques simultanées
+    }
 
-        // Extraire les valeurs d'attaque et de points de vie
-        const attackerAttackElement = attacker.querySelector(".pa_pokemon");
-        const defenderHPElement = defender.querySelector(".pv_pokemon");
-        const defenderHPBar = defender.querySelector(".hp"); // Récupérer la barre de vie
+    isBattleInProgress = true;
 
-        if (attackerAttackElement && defenderHPElement && defenderHPBar) {
-            const attackerAttackText = attackerAttackElement.innerText;
-            const defenderHPText = defenderHPElement.getAttribute("data-hp");
+    // Ajouter la classe attaqueActif au Pokémon attaquant
+    attacker.classList.add("attaqueActif");
+    // Ajouter la classe defendActif au Pokémon défendant
 
-            // Utiliser une expression régulière pour valider les valeurs en tant que nombres entiers
-            if (integerPattern.test(attackerAttackText) && integerPattern.test(defenderHPText)) {
-                const attackerAttack = parseInt(attackerAttackText);
-                const defenderHP = parseInt(defenderHPText);
+    defender.classList.add("defendActif");
 
-                setTimeout(() => {
-                     // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
+    // Extraire les valeurs d'attaque et de points de vie
+    const attackerAttackElement = attacker.querySelector(".pa_pokemon");
+    const defenderHPElement = defender.querySelector(".pv_pokemon");
+    const defenderHPBar = defender.querySelector(".hp"); // Récupérer la barre de vie
+
+    if (attackerAttackElement && defenderHPElement && defenderHPBar) {
+        const attackerAttackText = attackerAttackElement.innerText;
+        const defenderHPText = defenderHPElement.getAttribute("data-hp");
+
+        // Utiliser une expression régulière pour valider les valeurs en tant que nombres entiers
+        if (integerPattern.test(attackerAttackText) && integerPattern.test(defenderHPText)) {
+            const attackerAttack = parseInt(attackerAttackText);
+            const defenderHP = parseInt(defenderHPText);
+
+            setTimeout(() => {
+                // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
                 const damage = Math.max(0, attackerAttack); // Les dégâts ne peuvent pas être négatifs
 
-                // Assurez-vous que les dégâts ne sont pas supérieurs aux points de vie du défenseur
+                // Assurez que les dégâts ne sont pas supérieurs aux points de vie du défenseur
                 const newHP = Math.max(0, defenderHP - damage);
 
                 // Mettre à jour les points de vie de la cible
@@ -175,7 +188,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 // Mettre à jour la largeur de la barre de vie en pourcentage
                 const maxWidth = 100; // Largeur maximale de la barre de vie en pourcentage
                 const newWidth = (newHP / defenderHP) * maxWidth;
-                defenderHPBar.style.width = newWidth + '%';
+                defenderHPBar.style.width = newWidth + 'px';
 
                 if (newHP <= 0) {
                     // La cible est KO, la retirer de l'équipe défendante
@@ -189,79 +202,93 @@ document.addEventListener("DOMContentLoaded", async function () {
                         return;
                     }
                 }
-                }, 500);
-               
-            } else {
-                // Gérer le cas où les valeurs ne sont pas des nombres valides
-                console.error("Les valeurs de pa_pokemon ou pv_pokemon ne sont pas des nombres valides.");
-            }
-        } else {
-            // Gérer le cas où les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.
-            console.error("Les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.");
-        }
 
-        // Laisser un bref délai avant la prochaine attaque
-        setTimeout(() => {
-            isBattleInProgress = false;
-            // Supprimer la classe attaqueActif du Pokémon attaquant
-            attacker.classList.remove("attaqueActif");
-            // Supprimer la classe defendActif du Pokémon défendant
-            defender.classList.remove("defendActif");
-            doRound();
-        }, 1500);
+                // Passer au prochain round
+                setTimeout(() => {
+                    isBattleInProgress = false;
+                    // Supprimer la classe attaqueActif du Pokémon attaquant
+                    attacker.classList.remove("attaqueActif");
+                    // Supprimer la classe defendActif du Pokémon défendant
+                    defender.classList.remove("defendActif");
+                    doRound();
+                }, 600);
+
+            }, 500);
+
+        } else {
+            // Gérer le cas où les valeurs ne sont pas des nombres valides
+            console.error("Les valeurs de pa_pokemon ou pv_pokemon ne sont pas des nombres valides.");
+        }
+    } else {
+        // Gérer le cas où les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.
+        console.error("Les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.");
+    }
+}
+
+
+let round = 1;
+let teamRedIndex = 0;
+let teamFloraIndex = 0;
+
+function doRound() {
+    // Déterminer quelle équipe attaque en fonction du tour
+    let attacker, defender;
+
+    if (round % 2 === 0) {
+        // L'équipe Flora attaque
+        attacker = document.querySelectorAll(".pokemonTeamFlora")[teamFloraIndex];
+        defender = document.querySelectorAll(".pokemonTeamRed")[teamRedIndex];
+
+        teamFloraIndex++;
+        if (teamFloraIndex >= document.querySelectorAll(".pokemonTeamFlora").length) {
+            teamFloraIndex = 0;
+        }
+    } else {
+        // L'équipe Red attaque
+        attacker = document.querySelectorAll(".pokemonTeamRed")[teamRedIndex];
+        defender = document.querySelectorAll(".pokemonTeamFlora")[teamFloraIndex];
+
+        teamRedIndex++;
+        if (teamRedIndex >= document.querySelectorAll(".pokemonTeamRed").length) {
+            teamRedIndex = 0;
+        }
     }
 
-
-    let round = 1;
-    let teamRedIndex = 0;
-    let teamFloraIndex = 0;
-
-    function doRound() {
-        // Déterminer quelle équipe attaque en fonction du tour
-        let attacker, defender;
-
-        if (round % 2 === 0) {
-            // L'équipe Flora attaque
-            attacker = document.querySelectorAll(".pokemonTeamFlora")[teamFloraIndex];
-            defender = document.querySelectorAll(".pokemonTeamRed")[teamRedIndex];
-
-            teamFloraIndex++;
-            if (teamFloraIndex >= document.querySelectorAll(".pokemonTeamFlora").length) {
-                teamFloraIndex = 0;
-            }
-        } else {
-            // L'équipe Red attaque
-            attacker = document.querySelectorAll(".pokemonTeamRed")[teamRedIndex];
-            defender = document.querySelectorAll(".pokemonTeamFlora")[teamFloraIndex];
-
-            teamRedIndex++;
-            if (teamRedIndex >= document.querySelectorAll(".pokemonTeamRed").length) {
-                teamRedIndex = 0;
-            }
-        }
-
-        // Afficher quel Pokémon attaque quel autre Pokémon dans la console
-        console.log(`Tour ${round}: ${attacker.querySelector("p").innerText} attaque ${defender.querySelector("p").innerText}`);
+    // Vérifier si le Pokémon attaquant est en vie
+    if (!isPokemonKO(attacker)) {
+        let information = document.getElementById("result")
+        // Obtenir les noms des Pokémon attaquant et cible
+        const attackerName = attacker.querySelector("p").innerText;
+        const defenderName = defender.querySelector("p").innerText;
 
         // Simuler l'attaque et les dégâts
         simulateAttack(attacker, defender);
 
-        // Passer au prochain round
-        round++;
+        // Obtenir la valeur de l'attaque de l'attaquant
+        const attackerAttackValue = parseInt(attacker.querySelector(".pa_pokemon").innerText);
+
+        // Afficher quel Pokémon attaque quel autre Pokémon dans la console avec le montant de l'attaque
+        console.log(`Tour ${round}: ${attackerName} attaque ${defenderName} et inflige ${attackerAttackValue} points de dégâts`);
+        information.innerHTML += `<p style="color:white;">Tour ${round}: ${attackerName} attaque ${defenderName} et inflige ${attackerAttackValue} points de dégâts</p> <br>`
     }
 
-    const startButton = document.getElementById("start");
+    // Passer au prochain round
+    round++;
+}
+
+const startButton = document.getElementById("start");
+
+// Démarrer la première manche
+startButton.addEventListener("click", () => {
+    startButton.style.display = "none";
+    information.style.display = "flex"
+    console.log("Démarrer la première manche");
 
     // Démarrer la première manche
-    startButton.addEventListener("click", () => {
-        startButton.style.display = "none";
-        console.log("Démarrer la première manche");
+    doRound();
+});
 
-        // Démarrer la première manche
-        doRound();
-    });
-
-    // Définissez integerPattern en dehors de la fonction simulateAttack
-    const integerPattern = /^\d+$/;
+// Définissez integerPattern en dehors de la fonction simulateAttack
+const integerPattern = /^\d+$/;
 
 });
