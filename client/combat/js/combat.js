@@ -1,18 +1,5 @@
 "use strict";
-// Variable pour garder une trace du chargement des équipes
-let teamsLoaded = false;
 
-// Fonction pour charger les équipes
-async function loadTeams() {
-    if (!teamsLoaded) {
-        await getTeamRed();
-        await getTeamFlora();
-        teamsLoaded = true;
-    }
-}
-
-// getTeamRed();
-// getTeamFlora();
 document.addEventListener("DOMContentLoaded", async function () {
 
     // Fonction asynchrone pour effectuer une requête HTTP GET
@@ -106,6 +93,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+    getTeamRed();
 
     // Sélectionner les éléments HTML pour l'équipe Flora et les Pokéballs Flora
     const teamFlora = document.getElementById("teamFlora");
@@ -142,17 +130,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    // Fonction pour charger les équipes Red et Flora
-    async function loadTeams() {
-        await getTeamRed();
-        await getTeamFlora();
-    }
-
-    // Appeler la fonction pour charger les équipes au chargement initial
-    await loadTeams();
-
-
-
+    getTeamFlora();
 
     let isBattleInProgress = false;
 
@@ -271,8 +249,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Passer au prochain round
         round++;
     }
-
-
 
     const startButton = document.getElementById("start");
 
