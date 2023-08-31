@@ -146,7 +146,7 @@ const getAllPokedex = (req, res) => {
 
 // Obtenez les informations sur les utilisateurs dans l'équipe "Red"
 const getTeamRedInfo = async (req, res) => {
-        const query = `
+    const query = `
         SELECT user.username_user, user.level,
          pokemon.image_url_pokemon, pokemon.id_pokemon,
           pokemon.pv_pokemon, pokemon.pa_pokemon,
@@ -157,14 +157,14 @@ const getTeamRedInfo = async (req, res) => {
                JOIN pokedex ON user.id_user = pokedex.id_user
                 JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
         `;
-       conn.query(query, (err, result) => {
+    conn.query(query, (err, result) => {
         if (err) {
             console.error("Erreur lors de la récupération des données :" + err);
             res.status(500).json({ error: "Erreur lors de la récupération des données" })
         } else {
             res.status(200).json(result)
         }
-       });
+    });
 };
 
 // Créer un nouveau message
@@ -236,14 +236,30 @@ const getTeamFloraInfo = async (req, res) => {
            JOIN pokedex ON user.id_user = pokedex.id_user
             JOIN pokemon ON pokedex.id_pokemon = pokemon.id_pokemon;
     `;
-   conn.query(query, (err, result) => {
-    if (err) {
-        console.error("Erreur lors de la récupération des données :" + err);
-        res.status(500).json({ error: "Erreur lors de la récupération des données" })
-    } else {
-        res.status(200).json(result)
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de la récupération des données :" + err);
+            res.status(500).json({ error: "Erreur lors de la récupération des données" })
+        } else {
+            res.status(200).json(result)
+        }
+    });
+};
+
+// Supprime les données dans les tables "teamred" et "teamflora"
+const clearTeams = async (req, res) => {
+    try {
+        // Supprime toutes les données de la table "teamred"
+        await conn.query("DELETE FROM teamred");
+
+        // Supprime toutes les données de la table "teamflora"
+        await conn.query("DELETE FROM teamflora");
+
+        res.status(200).json({ message: "Team data cleared successfully" });
+    } catch (error) {
+        console.error("Error clearing team data:", error);
+        res.status(500).json({ error: "An error occurred while clearing team data" });
     }
-   });
 };
 
 
@@ -259,5 +275,8 @@ module.exports = {
     getBackGround,
     getTeamFloraInfo,
     getTeamRedInfo,
- createMessage, getAllMessages, deleteOneUserPokedex
+    createMessage,
+    getAllMessages,
+    deleteOneUserPokedex,
+    clearTeams
 }

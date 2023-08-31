@@ -70,19 +70,32 @@ header {
 
 /*Règles*/
 p {
-    margin: 25px 25px;
+    margin: 25px 75px;
 }
 
-.container{
+.container {
     overflow-y: auto;
 }
 
-/*Background Start*/
-.start {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #EBEF1E ;
+/* Sélecteur pour la partie de la barre de défilement */
+.container::-webkit-scrollbar {
+    width: 10px;
+    /* Largeur de la barre de défilement */
+}
+
+/* Style de la poignée (thumb) de la barre de défilement */
+.container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Couleur de la poignée */
+    border-radius: 5px;
+    /* Arrondi de la poignée */
+}
+
+/* Style du track (fond) de la barre de défilement */
+.container::-webkit-scrollbar-track {
+    background-color: #f1f1f100;
+    border-radius: 5px;
+    /* Couleur du track */
 }
 
 /*Police d'écriture*/
@@ -93,11 +106,41 @@ p {
     color: white;
 }
 
+.bungee-text-25 {
+    font-family: 'Bungee', cursive;
+    font-size: 25px;
+    text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+    color: white;
+}
+
 .bungee-text-15 {
     font-family: 'Bungee', cursive;
     font-size: 15px;
     text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
     color: white;
+
+    overflow-y: auto;
+}
+
+/* Sélecteur pour la partie de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar {
+    width: 10px;
+    /* Largeur de la barre de défilement */
+}
+
+/* Style de la poignée (thumb) de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Couleur de la poignée */
+    border-radius: 5px;
+    /* Arrondi de la poignée */
+}
+
+/* Style du track (fond) de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    /* Couleur du track */
 }
 
 .red-text {
@@ -108,6 +151,12 @@ p {
     color: #0085FF;
 }
 
-.green-text {
-    color: #00FF1A;
+.yellow-text {
+    color: #EBEF1E;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 2px solid #48B19E;
+    line-height: 1;
 }

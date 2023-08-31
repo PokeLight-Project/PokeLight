@@ -18,6 +18,7 @@
 
 <body>
     <main>
+
         <audio id="music" loop src="../audio/Pokémon-All-Title-Themes-creation.mp3"></audio>
         <nav>
             <a href="../creation/creation.html">
@@ -28,6 +29,13 @@
 
             <h1 class="choix_equipe-h1">CHOIX DE L'EQUIPE</h1>
 
+            <div class="popup-container" id="popupContainer">
+                <div class="popup" id="popup">
+                    <span class="popup-close" id="popupClose">❌</span>
+                    <p class="inline">Activez le son pour plus d'immersion !</p>
+                </div>
+            </div>
+
             <i id="sound_barre" class="fa-solid fa-volume-xmark"></i>
 
         </nav>
@@ -36,7 +44,7 @@
             <div class="container_left">
                 <img class="red_img" src="../Imgs/trainers/Red-pokemon.png" alt="Red">
                 <hr>
-                <div class="dragdrop_red">
+                <div class="dragdrop_red" id="id-dragdrop_red">
                     <!-- Cette div accueillera les pokémons drag&dropés -->
                 </div>
             </div>
@@ -46,7 +54,7 @@
             <div class="container_right">
                 <img class="flora_img" src="../Imgs/trainers/Flora.png" alt="Flora">
                 <hr>
-                <div class="dragdrop_flora">
+                <div class="dragdrop_flora" id="id-dragdrop_flora">
                     <!-- Cette div accueillera les pokémons drag&dropés -->
                 </div>
             </div>

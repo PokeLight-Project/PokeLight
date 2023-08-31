@@ -38,7 +38,6 @@ create.addEventListener("click", goToCreate);
 
 
 /* Audio */
-document.addEventListener("DOMContentLoaded", function () {
     let audio = document.getElementById("myAudio");
     let muteButton = document.getElementById("muteButton");
     let Playing = false;
@@ -59,4 +58,22 @@ document.addEventListener("DOMContentLoaded", function () {
             muteButton.classList.add("fa-volume-xmark");
         }
     })
+
+
+
+
+
+    /* Close Popup */
+    document.addEventListener("DOMContentLoaded", function () {
+        // Pop-up "activez le son"
+        const pop_up = document.getElementById("popupContainer")
+        const close_pop_up = document.getElementById("popupClose")
+    
+        setTimeout(() => {
+            pop_up.style.opacity = "1";
+        }, 1000);
+    
+        close_pop_up.addEventListener("click", () => {
+            pop_up.style.opacity = "0";
+        });
 });

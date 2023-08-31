@@ -29,6 +29,8 @@ main {
     border-radius: 5px;
 }
 
+
+
 nav {
     width: 100%;
     display: flex;
@@ -44,6 +46,35 @@ nav {
     font-size: 32px;
     color: #888C92;
     -webkit-text-stroke: #000000 1px;
+}
+
+.popup-container {
+    position: absolute;
+    right: 15%;
+    opacity: 0%;
+    transition: 1.6s;
+    background: linear-gradient(#48B19E, #FFFFFF);
+    border: solid black 1px;
+    border-radius: 15px;
+    width: 15%;
+    height: 6%;
+    font-family: handjet;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.3%;
+    padding-bottom: 1.5%;
+    cursor: default;
+}
+
+.popup-close {
+    display: flex;
+    margin-right: 2%;
+    text-align: right;
+    justify-content: end;
+    cursor: default;
+    color: #000000;
+    cursor: pointer;
 }
 
 .choix_equipe-h1 {
@@ -93,7 +124,7 @@ nav {
     width: 30%;
 }
 
-.container .container_left hr {
+.container .dragdrop_red hr {
     display: flex;
     margin: auto;
 

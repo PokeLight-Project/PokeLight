@@ -32,6 +32,43 @@ header {
     margin: 10px;
 }
 
+.popup-container {
+    position: absolute;
+    right: 3.4%;
+    opacity: 0%;
+    transition: 1.6s;
+    background-color: #f1f1f1e1;
+    border-radius: 15px;
+    width: 15%;
+    height: 5%;
+    font-family: handjet;
+    text-align: center;
+    justify-content: center;
+    margin-top: 8%;
+    padding-bottom: 1%;
+    cursor: default;
+}
+
+.popup {
+    background: linear-gradient(#48B19E, #FFFFFF);
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 7px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 400px;
+    height: 70px;
+}
+
+.popup-close {
+    display: flex;
+    margin-right: 5%;
+    text-align: right;
+    justify-content: end;
+    cursor: default;
+    color: #000000;
+}
+
 section {
     flex: auto;
     margin-top: 350px;
