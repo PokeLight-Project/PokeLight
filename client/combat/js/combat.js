@@ -134,34 +134,35 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     let isBattleInProgress = false;
 
-         // Fonction pour simuler une attaque avec délai
-function simulateAttack(attacker, defender) {
-    if (isBattleInProgress) {
-        return; // Évitez les attaques simultanées
-    }
+         // Fonction pour simuler une attaque
+    function simulateAttack(attacker, defender) {
+        if (isBattleInProgress) {
+            return; // Évitez les attaques simultanées
+        }
 
-    isBattleInProgress = true;
+        isBattleInProgress = true;
 
-    // Extraire les valeurs d'attaque et de points de vie
-    const attackerAttackElement = attacker.querySelector(".pa_pokemon");
-    const defenderHPElement = defender.querySelector(".pv_pokemon");
-    const defenderHPBar = defender.querySelector(".hp"); // Récupérer la barre de vie
+        // Ajouter la classe attaqueActif au Pokémon attaquant
+        attacker.classList.add("attaqueActif");
+        // Ajouter la classe defendActif au Pokémon défendant
+        defender.classList.add("defendActif");
 
-    if (attackerAttackElement && defenderHPElement && defenderHPBar) {
-        const attackerAttackText = attackerAttackElement.innerText;
-        const defenderHPText = defenderHPElement.getAttribute("data-hp");
+        // Extraire les valeurs d'attaque et de points de vie
+        const attackerAttackElement = attacker.querySelector(".pa_pokemon");
+        const defenderHPElement = defender.querySelector(".pv_pokemon");
+        const defenderHPBar = defender.querySelector(".hp"); // Récupérer la barre de vie
 
-        // Utiliser une expression régulière pour valider les valeurs en tant que nombres entiers
-        if (integerPattern.test(attackerAttackText) && integerPattern.test(defenderHPText)) {
-            const attackerAttack = parseInt(attackerAttackText);
-            const defenderHP = parseInt(defenderHPText);
+        if (attackerAttackElement && defenderHPElement && defenderHPBar) {
+            const attackerAttackText = attackerAttackElement.innerText;
+            const defenderHPText = defenderHPElement.getAttribute("data-hp");
 
-            // Déplacez le Pokémon attaquant vers le haut (préparation de l'attaque)
-            // attacker.style.bottom = "100%";
+            // Utiliser une expression régulière pour valider les valeurs en tant que nombres entiers
+            if (integerPattern.test(attackerAttackText) && integerPattern.test(defenderHPText)) {
+                const attackerAttack = parseInt(attackerAttackText);
+                const defenderHP = parseInt(defenderHPText);
 
-            // Attendez 0.5 seconde (500 millisecondes) avant de réduire les PV
-            setTimeout(() => {
-                // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
+                setTimeout(() => {
+                     // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
                 const damage = Math.max(0, attackerAttack); // Les dégâts ne peuvent pas être négatifs
 
                 // Assurez-vous que les dégâts ne sont pas supérieurs aux points de vie du défenseur
@@ -188,25 +189,27 @@ function simulateAttack(attacker, defender) {
                         return;
                     }
                 }
-
-                // Remettez le Pokémon attaquant à sa position d'origine
-                // attacker.style.bottom = "50%";
-            }, 500); // Attendre 0.5 seconde (500 millisecondes) avant de réduire les PV
-
-            // Laissez un bref délai avant la prochaine attaque
-            setTimeout(() => {
-                isBattleInProgress = false;
-                doRound();
-            }, 500); // Attendre 0.5 seconde (500 millisecondes) avant la prochaine attaque
+                }, 500);
+               
+            } else {
+                // Gérer le cas où les valeurs ne sont pas des nombres valides
+                console.error("Les valeurs de pa_pokemon ou pv_pokemon ne sont pas des nombres valides.");
+            }
         } else {
-            // Gérer le cas où les valeurs ne sont pas des nombres valides
-            console.error("Les valeurs de pa_pokemon ou pv_pokemon ne sont pas des nombres valides.");
+            // Gérer le cas où les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.
+            console.error("Les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.");
         }
-    } else {
-        // Gérer le cas où les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.
-        console.error("Les éléments pa_pokemon ou pv_pokemon n'ont pas été trouvés.");
+
+        // Laisser un bref délai avant la prochaine attaque
+        setTimeout(() => {
+            isBattleInProgress = false;
+            // Supprimer la classe attaqueActif du Pokémon attaquant
+            attacker.classList.remove("attaqueActif");
+            // Supprimer la classe defendActif du Pokémon défendant
+            defender.classList.remove("defendActif");
+            doRound();
+        }, 1500);
     }
-}
 
 
     let round = 1;
