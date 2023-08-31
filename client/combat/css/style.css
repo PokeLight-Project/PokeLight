@@ -348,13 +348,26 @@ header #volume {
     justify-content: center;
 }
 
-.imgPokeball{
+.imgPokeballRed{
     height: 35px;
     margin-top: 5px;
     
 }
 
-.imgPokeball img{
+.imgPokeballRed img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.imgPokeballFlora{
+    height: 35px;
+    margin-top: 5px;
+    
+}
+
+.imgPokeballFlora img{
     display: flex;
     justify-content: center;
     align-items: center;
