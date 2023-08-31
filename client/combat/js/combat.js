@@ -1,5 +1,18 @@
 "use strict";
+// Variable pour garder une trace du chargement des équipes
+let teamsLoaded = false;
 
+// Fonction pour charger les équipes
+async function loadTeams() {
+    if (!teamsLoaded) {
+        await getTeamRed();
+        await getTeamFlora();
+        teamsLoaded = true;
+    }
+}
+
+// getTeamRed();
+// getTeamFlora();
 document.addEventListener("DOMContentLoaded", async function () {
 
     // Fonction asynchrone pour effectuer une requête HTTP GET
@@ -93,7 +106,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    getTeamRed();
 
     // Sélectionner les éléments HTML pour l'équipe Flora et les Pokéballs Flora
     const teamFlora = document.getElementById("teamFlora");
@@ -130,11 +142,21 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    getTeamFlora();
+    // Fonction pour charger les équipes Red et Flora
+    async function loadTeams() {
+        await getTeamRed();
+        await getTeamFlora();
+    }
+
+    // Appeler la fonction pour charger les équipes au chargement initial
+    await loadTeams();
+
+
+
 
     let isBattleInProgress = false;
 
-         // Fonction pour simuler une attaque
+    // Fonction pour simuler une attaque
     function simulateAttack(attacker, defender) {
         if (isBattleInProgress) {
             return; // Évitez les attaques simultanées
@@ -162,35 +184,35 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const defenderHP = parseInt(defenderHPText);
 
                 setTimeout(() => {
-                     // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
-                const damage = Math.max(0, attackerAttack); // Les dégâts ne peuvent pas être négatifs
+                    // Calculer les dégâts en soustrayant l'attaque du défenseur des points de vie du défenseur
+                    const damage = Math.max(0, attackerAttack); // Les dégâts ne peuvent pas être négatifs
 
-                // Assurez-vous que les dégâts ne sont pas supérieurs aux points de vie du défenseur
-                const newHP = Math.max(0, defenderHP - damage);
+                    // Assurez-vous que les dégâts ne sont pas supérieurs aux points de vie du défenseur
+                    const newHP = Math.max(0, defenderHP - damage);
 
-                // Mettre à jour les points de vie de la cible
-                defenderHPElement.setAttribute("data-hp", newHP);
-                defenderHPElement.innerText = newHP + ' PV'; // Mettez à jour le texte des PV
+                    // Mettre à jour les points de vie de la cible
+                    defenderHPElement.setAttribute("data-hp", newHP);
+                    defenderHPElement.innerText = newHP + ' PV'; // Mettez à jour le texte des PV
 
-                // Mettre à jour la largeur de la barre de vie en pourcentage
-                const maxWidth = 100; // Largeur maximale de la barre de vie en pourcentage
-                const newWidth = (newHP / defenderHP) * maxWidth;
-                defenderHPBar.style.width = newWidth + '%';
+                    // Mettre à jour la largeur de la barre de vie en pourcentage
+                    const maxWidth = 100; // Largeur maximale de la barre de vie en pourcentage
+                    const newWidth = (newHP / defenderHP) * maxWidth;
+                    defenderHPBar.style.width = newWidth + '%';
 
-                if (newHP <= 0) {
-                    // La cible est KO, la retirer de l'équipe défendante
-                    defender.style.display = 'none'; // Cacher le Pokémon KO
+                    if (newHP <= 0) {
+                        // La cible est KO, la retirer de l'équipe défendante
+                        defender.style.display = 'none'; // Cacher le Pokémon KO
 
-                    // Vérifier si toute l'équipe est KO
-                    const activeDefenders = Array.from(document.querySelectorAll(".pokemonTeamFlora:not([style='display: none;'])"));
-                    if (activeDefenders.length === 0) {
-                        console.log("Fin du combat. Toute l'équipe adverse est KO.");
-                        isBattleInProgress = false;
-                        return;
+                        // Vérifier si toute l'équipe est KO
+                        const activeDefenders = Array.from(document.querySelectorAll(".pokemonTeamFlora:not([style='display: none;'])"));
+                        if (activeDefenders.length === 0) {
+                            console.log("Fin du combat. Toute l'équipe adverse est KO.");
+                            isBattleInProgress = false;
+                            return;
+                        }
                     }
-                }
                 }, 500);
-               
+
             } else {
                 // Gérer le cas où les valeurs ne sont pas des nombres valides
                 console.error("Les valeurs de pa_pokemon ou pv_pokemon ne sont pas des nombres valides.");
@@ -249,6 +271,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         // Passer au prochain round
         round++;
     }
+
+
 
     const startButton = document.getElementById("start");
 

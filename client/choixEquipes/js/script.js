@@ -57,7 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return "";
     }
 
+    function clearPokedexContainer() {
+        const pokedexContainer = document.getElementById("container_middle");
+        pokedexContainer.innerHTML = "";
+    }
+
     function getAllPokedex() {
+        clearPokedexContainer(); // Supprimer les cartes Pokémon existantes
+        // Le reste du code pour ajouter les cartes Pokémon à la partie centrale
         let showPokedex = document.getElementById("container_middle");
 
         const response = httpGet("http://localhost:8000/allPokedex");

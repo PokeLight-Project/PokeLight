@@ -35,6 +35,7 @@ const createUserAndAddToPokedex = async (req, res) => {
     }
 };
 
+// Création de l'équipe Red
 const createTeamRed = async (req, res) => {
     const { id_user } = req.body;
     console.log(id_user)
@@ -54,6 +55,7 @@ const createTeamRed = async (req, res) => {
     }
 }
 
+// Création de l'équipe Flora
 const createTeamFlora = async (req, res) => {
     const { id_user } = req.body;
 
