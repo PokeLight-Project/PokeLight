@@ -190,6 +190,20 @@ header #volume {
     left: 70%;
 }
 
+.pokemonTeamRed.attaqueActif {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 80% !important;
+    transition: 0.5s;
+}
+
+.pokemonTeamRed.defendActif {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 80% !important;
+    transition: 0.5s;
+}
+
 #pokemonFlora1 {
     position: absolute;
     bottom: 5%;
@@ -218,7 +232,23 @@ header #volume {
     position: absolute;
     bottom: 5%;
     left: 70%;
+
 }
+
+.pokemonTeamFlora.attaqueActif {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 5% !important;
+    transition: 0.5s;
+}
+
+.pokemonTeamFlora.defendActif {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 5% !important;
+    transition: 0.5s;
+}
+
 
 .pokemonTeamRed p {
     color: #FFC700;
@@ -295,7 +325,7 @@ header #volume {
 
 .hp {
     position: absolute;
-    width: 100px;
+    /* width: 100px; */
     height: 10px;
     background-color: #00FD56;
     z-index: 2;
