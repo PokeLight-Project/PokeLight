@@ -36,12 +36,11 @@ nav {
     right: 6%;
     opacity: 0%;
     transition: 1.6s;
-    background-color: #f1f1f1e1;
+    background: linear-gradient(#48B19E, #FFFFFF);
     border: solid black 1px;
     border-radius: 15px;
-    width: 15%;
+    width: 17%;
     height: 6%;
-
     font-family: handjet;
     text-align: center;
     justify-content: center;
