@@ -32,6 +32,36 @@ header {
     margin: 10px;
 }
 
+.popup-container {
+    /* display: none; */
+    position: absolute;
+    right: 13%;
+    opacity: 0%;
+    transition: 1.6s;
+    background-color: #f1f1f1e1;
+    border: solid black 1px;
+    border-radius: 15px;
+    width: 15%;
+    height: 6%;
+
+    font-family: handjet;
+    text-align: center;
+    justify-content: center;
+    margin-top: 1%;
+    padding-bottom: 1%;
+    cursor: default;
+}
+
+.popup-close {
+    display: flex;
+    margin-right: 5%;
+    text-align: right;
+    justify-content: end;
+    cursor: default;
+
+    color: #000000;
+}
+
 section {
     flex: auto;
     margin-top: 350px;

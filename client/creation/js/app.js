@@ -1,6 +1,18 @@
 "use strict"
 
 document.addEventListener("DOMContentLoaded", async function () {
+    // Pop-up "activez le son"
+    const pop_up = document.getElementById("popupContainer")
+    const close_pop_up = document.getElementById("popupClose")
+
+    setTimeout(() => {
+        pop_up.style.opacity = "1";
+    }, 1000);
+
+    close_pop_up.addEventListener("click", () => {
+        pop_up.style.opacity = "0";
+    });
+
     // Récupération des éléments audio et du bouton de lecture
     const myAudio = document.getElementById("myAudio");
     const playAudio = document.getElementById("volume");

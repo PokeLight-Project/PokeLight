@@ -73,7 +73,7 @@ p {
     margin: 25px 75px;
 }
 
-.container{
+.container {
     overflow-y: auto;
 }
 
@@ -118,6 +118,29 @@ p {
     font-size: 15px;
     text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
     color: white;
+
+    overflow-y: auto;
+}
+
+/* Sélecteur pour la partie de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar {
+    width: 10px;
+    /* Largeur de la barre de défilement */
+}
+
+/* Style de la poignée (thumb) de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Couleur de la poignée */
+    border-radius: 5px;
+    /* Arrondi de la poignée */
+}
+
+/* Style du track (fond) de la barre de défilement */
+.bungee-text-15::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    /* Couleur du track */
 }
 
 .red-text {
