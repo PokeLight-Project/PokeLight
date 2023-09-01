@@ -58,6 +58,7 @@ header #volume {
 .blockImg img {
     width: 80px;
     border: 2px solid black;
+    transform: scaleX(-1);
 }
 
 
@@ -86,15 +87,15 @@ header #volume {
 
 .flora {
     width: 350px;
-    background-color: #FF6464;
+    background-color: #3184FF;
     display: flex;
     border: 6px solid black;
     flex-wrap: wrap;
 }
 
-.flora img {
+/* .flora img {
     transform: scaleX(-1);
-}
+} */
 
 .flora span {
     font-family: 'Frijole', cursive;
@@ -113,7 +114,11 @@ header #volume {
 }
 
 .plateformeFlora {
-    margin-top: 54px;
+    margin-top: -85px;
+    position: relative;
+    left: 0px;
+    overflow: hidden;
+    width: 271px;
 }
 
 
@@ -121,9 +126,9 @@ header #volume {
 .plateformeFlora #floraGif {
     width: 75px;
     position: relative;
-    left: 217px;
+    left: 160px;
     z-index: 2;
-    top: -54px;
+    top: 84px;
     transform: scaleX(-1);
 
 }

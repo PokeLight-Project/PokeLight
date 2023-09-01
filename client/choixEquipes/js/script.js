@@ -121,6 +121,7 @@ containers.forEach((container) => {
             if (container.childElementCount < 5) {
                 if (existingCard) {
                     container.appendChild(existingCard);
+                    showPokedex.removeChild(existingCard); // Retirer la carte du Pokédex
                     const userId = data.id_user;
                     const teamId = container.id === "id-dragdrop_flora" ? "teamflora" : "teamred";
                     sendTeamData(userId, teamId);
@@ -163,6 +164,7 @@ containers.forEach((container) => {
         } else {
             if (existingCard) {
                 container.appendChild(existingCard);
+                showPokedex.removeChild(existingCard); // Retirer la carte du Pokédex
                 sortCardsAlphabetically(container); // Tri après retrait
             }
         }
@@ -207,6 +209,7 @@ clearTeamData();
                 if (!addedUsers.has(userId)) { // Check if the user has been added before
                     sendTeamData(userId, "teamred");
                     addedUsers.add(userId);
+                    console.log(userId);
                 }
             });
     
@@ -216,6 +219,7 @@ clearTeamData();
                 if (!addedUsers.has(userId)) { // Check if the user has been added before
                     sendTeamData(userId, "teamflora");
                     addedUsers.add(userId);
+                    console.log(userId);
                 }
             });
     
